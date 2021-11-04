@@ -17,10 +17,10 @@ class CoktailApiProvider {
 
     if (response.statusCode == 200) {
       final items = json.decode(response.body)['drinks'];
-      List<CocktailInfo> listOfUsers = items.map<CocktailInfo>((json) {
+      List<CocktailInfo> coktailsInfo = items.map<CocktailInfo>((json) {
         return CocktailInfo.fromJson(json);
       }).toList();
-      return listOfUsers;
+      return coktailsInfo;
     } else {
       throw Exception('No internet connection');
     }
@@ -35,8 +35,8 @@ class CoktailApiProvider {
 
     if (response.statusCode == 200) {
       final items = json.decode(response.body);
-      Cocktail drinkDetails = Cocktail.fromJson(items);
-      return drinkDetails;
+      Cocktail cocktail = Cocktail.fromJson(items);
+      return cocktail;
     } else {
       throw Exception('No internet connection');
     }
@@ -51,8 +51,8 @@ class CoktailApiProvider {
 
     if (response.statusCode == 200) {
       final item = json.decode(response.body);
-      Cocktail drink = Cocktail.fromJson(item);
-      return drink;
+      Cocktail cocktail = Cocktail.fromJson(item);
+      return cocktail;
     } else {
       throw Exception('No internet connection');
     }
