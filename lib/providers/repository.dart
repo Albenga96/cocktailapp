@@ -19,4 +19,12 @@ class Repository {
   Future<Cocktail> getDrinkRandom() {
     return drinkApiProvider.getDrinkRandom();
   }
+
+  Future<List<Cocktail>> searchCoktailsByName(String search) {
+    return drinkApiProvider.searchCoktailsByName(search);
+  }
+
+  Future<List<Cocktail>> searchCoktailsByIngredients(String search) {
+    return drinkApiProvider.searchCoktailsByName(search);
+  }
 }
