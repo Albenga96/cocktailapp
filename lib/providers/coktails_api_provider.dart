@@ -75,4 +75,22 @@ class CoktailApiProvider {
       throw Exception('No internet connection');
     }
   }
+
+  Future<List<Cocktail>> searchCoktailsByIngredients(String ingredient) async {
+    String url = '${baseUrl}search.php?i=$ingredient';
+
+    Uri uri = Uri.parse(url);
+
+    Response response = await get(uri);
+
+    if (response.statusCode == 200) {
+      final items = json.decode(response.body);
+      List<Cocktail> cocktails = items.map<Cocktail>((json) {
+        return CocktailInfo.fromJson(json);
+      }).toList();
+      return cocktails;
+    } else {
+      throw Exception('No internet connection');
+    }
+  }
 }
