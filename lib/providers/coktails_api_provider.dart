@@ -22,7 +22,7 @@ class CoktailApiProvider {
       }).toList();
       return listOfUsers;
     } else {
-      throw Exception('Failed to load internet');
+      throw Exception('No internet connection');
     }
   }
 
@@ -38,7 +38,7 @@ class CoktailApiProvider {
       Cocktail drinkDetails = Cocktail.fromJson(items);
       return drinkDetails;
     } else {
-      throw Exception('Failed to load internet');
+      throw Exception('No internet connection');
     }
   }
 
@@ -54,7 +54,7 @@ class CoktailApiProvider {
       Cocktail drink = Cocktail.fromJson(item);
       return drink;
     } else {
-      throw Exception('Failed to load internet');
+      throw Exception('No internet connection');
     }
   }
 }
