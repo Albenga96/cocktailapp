@@ -24,6 +24,7 @@ class HomeView extends StatelessWidget {
         ),
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(
@@ -38,8 +39,8 @@ class HomeView extends StatelessWidget {
               elevation: CocktailsMargins.coctailsMarginSmall,
               child: Padding(
                 padding: const EdgeInsets.symmetric(
-                  vertical: CocktailsMargins.coctailsMarginSmall,
-                  horizontal: CocktailsMargins.cocktailMarginMedium,
+                  vertical: CocktailsMargins.cocktailMarginMedium,
+                  horizontal: CocktailsMargins.cocktailMarginBig,
                 ),
                 child: TextFormField(
                   decoration: const InputDecoration.collapsed(
@@ -50,6 +51,7 @@ class HomeView extends StatelessWidget {
             ),
           ),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: const [
               DrinkSelector(
                 text: "Alcolici",
