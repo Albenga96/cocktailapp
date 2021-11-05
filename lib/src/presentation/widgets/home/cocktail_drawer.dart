@@ -23,8 +23,16 @@ class CocktailDrawer extends StatelessWidget {
             ),
           ),
           ListTile(
+            onTap: () {},
             title: Text(
               "Preferiti",
+              style: cocktailsLightTheme().textTheme.headline3,
+            ),
+          ),
+          ListTile(
+            onTap: () {},
+            title: Text(
+              "Scegli per me",
               style: cocktailsLightTheme().textTheme.headline3,
             ),
           ),
