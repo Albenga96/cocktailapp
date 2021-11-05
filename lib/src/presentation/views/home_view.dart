@@ -1,6 +1,7 @@
 import 'package:cocktailapp/src/config/themes/cocktails_margins.dart';
 import 'package:cocktailapp/src/config/themes/cocktails_sizes.dart';
 import 'package:cocktailapp/src/presentation/utils/strings.dart';
+import 'package:cocktailapp/src/presentation/widgets/home/drink_selector.dart';
 
 import '../../config/themes/app_theme.dart';
 import '../../config/themes/cocktails_colors.dart';
@@ -36,8 +37,9 @@ class HomeView extends StatelessWidget {
               ),
               elevation: CocktailsMargins.coctailsMarginSmall,
               child: Padding(
-                padding: const EdgeInsets.all(
-                  CocktailsMargins.coctailsMarginSmall,
+                padding: const EdgeInsets.symmetric(
+                  vertical: CocktailsMargins.coctailsMarginSmall,
+                  horizontal: CocktailsMargins.cocktailMarginMedium,
                 ),
                 child: TextFormField(
                   decoration: const InputDecoration.collapsed(
@@ -46,6 +48,16 @@ class HomeView extends StatelessWidget {
                 ),
               ),
             ),
+          ),
+          Row(
+            children: const [
+              DrinkSelector(
+                text: "Alcolici",
+              ),
+              DrinkSelector(
+                text: "Analcolici",
+              )
+            ],
           ),
         ],
       ),
