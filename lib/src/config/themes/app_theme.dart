@@ -15,9 +15,17 @@ ThemeData cocktailsLightTheme() => ThemeData(
           fontSize: CocktailTextSizes.textMedium,
           color: CocktailsColors.cocktailsSecondaryColor,
         ),
+        headline3: TextStyle(
+          fontSize: CocktailTextSizes.textMedium,
+          color: CocktailsColors.cocktailsPrimaryColor,
+        ),
         headline2: TextStyle(
           fontSize: CocktailTextSizes.textSmall,
           color: CocktailsColors.cocktailsSecondaryColor,
+        ),
+        headline1: TextStyle(
+          fontSize: CocktailTextSizes.textSmall,
+          color: CocktailsColors.cocktailsPrimaryColor,
         ),
       ),
     );

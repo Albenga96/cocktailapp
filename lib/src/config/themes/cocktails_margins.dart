@@ -1,5 +1,5 @@
 class CocktailsMargins {
-  static const coctailsMarginSmall = 8;
-  static const cocktailMarginMedium = 12;
-  static const cocktailMarginBig = 16;
+  static const double coctailsMarginSmall = 8;
+  static const double cocktailMarginMedium = 12;
+  static const double cocktailMarginBig = 16;
 }
