@@ -2,6 +2,7 @@ import 'package:cocktailapp/src/config/themes/cocktails_margins.dart';
 import 'package:cocktailapp/src/config/themes/cocktails_sizes.dart';
 import 'package:cocktailapp/src/presentation/utils/strings.dart';
 import 'package:cocktailapp/src/presentation/widgets/home/drink_selector.dart';
+import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 
 import '../../config/themes/app_theme.dart';
 import '../../config/themes/cocktails_colors.dart';
@@ -23,45 +24,50 @@ class HomeView extends StatelessWidget {
           style: cocktailsLightTheme().textTheme.headline6,
         ),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: CocktailsMargins.cocktailMarginBig,
-            ),
-            child: Card(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(
-                  CocktailSizes.sizeSmall,
-                ),
-              ),
-              elevation: CocktailsMargins.coctailsMarginSmall,
-              child: Padding(
+      body: KeyboardVisibilityBuilder(
+        builder: (context, isKeyboardVisible) {
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Padding(
                 padding: const EdgeInsets.symmetric(
-                  vertical: CocktailsMargins.cocktailMarginMedium,
                   horizontal: CocktailsMargins.cocktailMarginBig,
                 ),
-                child: TextFormField(
-                  decoration: const InputDecoration.collapsed(
-                    hintText: Strings.searchCocktailText,
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(
+                      CocktailSizes.sizeSmall,
+                    ),
+                  ),
+                  elevation: CocktailsMargins.coctailsMarginSmall,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: CocktailsMargins.cocktailMarginMedium,
+                      horizontal: CocktailsMargins.cocktailMarginBig,
+                    ),
+                    child: TextFormField(
+                      decoration: const InputDecoration.collapsed(
+                        hintText: Strings.searchCocktailText,
+                      ),
+                    ),
                   ),
                 ),
               ),
-            ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: const [
-              DrinkSelector(
-                text: "Alcolici",
-              ),
-              DrinkSelector(
-                text: "Analcolici",
-              )
+              if (!isKeyboardVisible)
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: const [
+                    DrinkSelector(
+                      text: "Alcolici",
+                    ),
+                    DrinkSelector(
+                      text: "Analcolici",
+                    )
+                  ],
+                ),
             ],
-          ),
-        ],
+          );
+        },
       ),
     );
   }
