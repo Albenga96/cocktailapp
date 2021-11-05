@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'pages/home_page.dart';
+import 'presentation/views/home_view.dart';
 
 class CocktailsApp extends StatelessWidget {
   const CocktailsApp({Key? key}) : super(key: key);
@@ -12,7 +11,7 @@ class CocktailsApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const HomePage(),
+      home: const HomeView(),
     );
   }
 }
