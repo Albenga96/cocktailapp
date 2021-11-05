@@ -9,6 +9,15 @@ ThemeData cocktailsLightTheme() => ThemeData(
         headline6: TextStyle(
           fontSize: CocktailTextSizes.textBig,
           color: CocktailsColors.cocktailsPrimaryColor,
+          fontWeight: FontWeight.bold,
+        ),
+        headline4: TextStyle(
+          fontSize: CocktailTextSizes.textMedium,
+          color: CocktailsColors.cocktailsPrimaryColor,
+        ),
+        headline2: TextStyle(
+          fontSize: CocktailTextSizes.textSmall,
+          color: CocktailsColors.cocktailsPrimaryColor,
         ),
       ),
     );
