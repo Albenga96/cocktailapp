@@ -1,4 +1,6 @@
 import 'package:cocktailapp/src/config/themes/cocktails_margins.dart';
+import 'package:cocktailapp/src/config/themes/cocktails_sizes.dart';
+import 'package:cocktailapp/src/presentation/utils/strings.dart';
 
 import '../../config/themes/app_theme.dart';
 import '../../config/themes/cocktails_colors.dart';
@@ -22,11 +24,26 @@ class HomeView extends StatelessWidget {
       ),
       body: Column(
         children: [
-          Card(
-            elevation: CocktailsMargins.coctailsMarginSmall,
-            child: TextFormField(
-              decoration: const InputDecoration.collapsed(
-                hintText: "Cerca un cocktail...",
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: CocktailsMargins.cocktailMarginBig,
+            ),
+            child: Card(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(
+                  CocktailSizes.sizeSmall,
+                ),
+              ),
+              elevation: CocktailsMargins.coctailsMarginSmall,
+              child: Padding(
+                padding: const EdgeInsets.all(
+                  CocktailsMargins.coctailsMarginSmall,
+                ),
+                child: TextFormField(
+                  decoration: const InputDecoration.collapsed(
+                    hintText: Strings.searchCocktailText,
+                  ),
+                ),
               ),
             ),
           ),
