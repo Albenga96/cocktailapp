@@ -18,7 +18,7 @@ class HomeView extends StatelessWidget {
         centerTitle: true,
         backgroundColor: CocktailsColors.cocktailsPrimaryColor,
         title: Text(
-          "Cocktails - EasyPol",
+          Strings.homePageTitleText,
           style: cocktailsLightTheme().textTheme.headline6,
         ),
       ),
