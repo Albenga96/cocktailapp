@@ -63,26 +63,12 @@ class HomeView extends StatelessWidget {
                   DrinkSelector(
                     text: "Alcolici",
                     asset: "assets/images/drink.svg",
+                    filter: "Alcoholic",
                   ),
                   DrinkSelector(
                     text: "Analcolici",
                     asset: "assets/images/analcoholic.svg",
-                  )
-                ],
-              ),
-              SizedBox(
-                height: CocktailSizes.sizebig,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: const [
-                  DrinkSelector(
-                    text: "Ordinary",
-                    asset: "assets/images/ordinary.svg",
-                  ),
-                  DrinkSelector(
-                    text: "Cocktail",
-                    asset: "assets/images/cocktail.svg",
+                    filter: "Non_Alcoholic",
                   )
                 ],
               ),
@@ -90,7 +76,10 @@ class HomeView extends StatelessWidget {
                 height: CocktailSizes.sizebig,
               ),
               DrinkSelector(
-                  text: "Scegli tu per me", asset: "assets/images/random.svg")
+                text: "Scegli tu per me",
+                asset: "assets/images/random.svg",
+                filter: "Alcoholic",
+              )
             ],
           ),
         ],

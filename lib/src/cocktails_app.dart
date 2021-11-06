@@ -4,7 +4,6 @@ import 'package:cocktailapp/src/presentation/views/auth_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
-import 'presentation/views/home_view.dart';
 
 class CocktailsApp extends StatelessWidget {
   const CocktailsApp({Key? key}) : super(key: key);
@@ -24,7 +23,7 @@ class CocktailsApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Cocktails',
         theme: cocktailsLightTheme(),
-        home: HomeView(), //TODO: Authview()
+        home: AuthView(), //TODO: Authview()
       ),
     );
   }

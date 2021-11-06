@@ -11,10 +11,12 @@ class DrinkSelector extends StatelessWidget {
     Key? key,
     required this.text,
     required this.asset,
+    required this.filter,
   }) : super(key: key);
 
   final String text;
   final String asset;
+  final String filter;
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +26,7 @@ class DrinkSelector extends StatelessWidget {
           MaterialPageRoute(
             builder: (ctx) => ResultView(
               title: text,
+              filter: filter,
             ),
           ),
         );

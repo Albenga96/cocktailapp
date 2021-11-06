@@ -24,8 +24,7 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
   final appModule = _$AppModule();
   gh.lazySingleton<_i3.Dio>(() => appModule.provideDio());
   gh.lazySingleton<_i4.LocalAuthentication>(() => appModule.localAuth);
-  gh.lazySingleton<_i5.RemoteDataSource>(
-      () => _i5.RemoteDataSource(get<_i3.Dio>(), baseUrl: get<String>()));
+  gh.factory<_i5.RemoteDataSource>(() => _i5.RemoteDataSource(get<_i3.Dio>()));
   gh.lazySingleton<_i6.CocktailRepository>(
       () => _i7.CocktailRepositoryImpl(get<_i5.RemoteDataSource>()));
   gh.factory<_i8.GetAlcoholicCocktailsUseCase>(

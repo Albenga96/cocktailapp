@@ -1,23 +1,25 @@
 import 'package:cocktailapp/src/data/models/cocktail.dart';
+import 'package:cocktailapp/src/data/models/cocktail_response.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
 
 part 'remote_data_source.g.dart';
 
+@injectable
 @LazySingleton()
 @RestApi(baseUrl: "https://www.thecocktaildb.com/api/json/v1/1")
 abstract class RemoteDataSource {
   @factoryMethod
-  factory RemoteDataSource(Dio dio, {String baseUrl}) = _RemoteDataSource;
+  factory RemoteDataSource(Dio dio) = _RemoteDataSource;
 
   @GET("/filter.php")
-  Future<List<Cocktail>> getAlcoholicCocktails(
+  Future<CocktailResponse> getAlcoholicCocktails(
     @Query("a") String alcoholic,
   );
 
   @GET("/filter.php")
-  Future<List<Cocktail>> getCategoryCocktails(
+  Future<CocktailResponse> getCategoryCocktails(
     @Query("c") String category,
   );
 }

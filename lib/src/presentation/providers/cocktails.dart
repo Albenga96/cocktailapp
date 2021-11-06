@@ -27,7 +27,7 @@ class Cocktails with ChangeNotifier {
         params: filter,
       );
     } catch (e) {
-      throw (e);
+      throw ("Si è verificato un errore");
     }
   }
 
@@ -37,7 +37,7 @@ class Cocktails with ChangeNotifier {
         params: filter,
       );
     } catch (e) {
-      throw (e);
+      throw ("Si è verificato un errore");
     }
   }
 }

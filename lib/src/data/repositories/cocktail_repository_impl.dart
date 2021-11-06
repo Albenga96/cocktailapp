@@ -13,7 +13,7 @@ class CocktailRepositoryImpl implements CocktailRepository {
   @override
   Future<List<CocktailEntity>> getAlcoholicCocktails(String alcoholic) async {
     return _remoteDataSource.getAlcoholicCocktails(alcoholic).then(
-          (cocktails) => cocktails
+          (cocktailResponse) => cocktailResponse.drinks
               .map(
                 (cocktail) => cocktail.toCocktailEntity,
               )
@@ -24,7 +24,7 @@ class CocktailRepositoryImpl implements CocktailRepository {
   @override
   Future<List<CocktailEntity>> getCategoryCocktails(String category) async {
     return _remoteDataSource.getCategoryCocktails(category).then(
-          (cocktails) => cocktails
+          (cocktailResponse) => cocktailResponse.drinks
               .map(
                 (cocktail) => cocktail.toCocktailEntity,
               )

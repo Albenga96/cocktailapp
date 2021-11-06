@@ -1,15 +1,18 @@
 import 'package:cocktailapp/src/config/themes/app_theme.dart';
 import 'package:cocktailapp/src/config/themes/cocktails_colors.dart';
+import 'package:cocktailapp/src/domain/entities/cocktail_entity.dart';
 import 'package:cocktailapp/src/presentation/providers/cocktails.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class ResultView extends StatefulWidget {
   final String title;
+  final String filter;
 
   const ResultView({
     Key? key,
     required this.title,
+    required this.filter,
   }) : super(key: key);
 
   @override
@@ -19,7 +22,7 @@ class ResultView extends StatefulWidget {
 class _ResultViewState extends State<ResultView> {
   @override
   void initState() {
-    Provider.of<Cocktails>(context, listen: false).filter = "Alcoholic";
+    Provider.of<Cocktails>(context, listen: false).filter = widget.filter;
 
     super.initState();
   }
@@ -40,7 +43,26 @@ class _ResultViewState extends State<ResultView> {
           style: cocktailsLightTheme().textTheme.headline6,
         ),
       ),
-      body: ListView(),
+      body: FutureBuilder(
+        future: _refreshCocktails(context),
+        builder: (context, snapshot) =>
+            snapshot.connectionState == ConnectionState.waiting
+                ? Center(
+                    child: CircularProgressIndicator(),
+                  )
+                : Consumer<Cocktails>(
+                    builder: (ctx, cocktailsData, _) => ListView.builder(
+                        itemCount: cocktailsData.cocktails.length,
+                        itemBuilder: (ctx, index) {
+                          return ListTile(
+                            title: Text(
+                              cocktailsData.cocktails[index].drinkName,
+                              style: cocktailsLightTheme().textTheme.headline4,
+                            ),
+                          );
+                        }),
+                  ),
+      ),
     );
   }
 }
