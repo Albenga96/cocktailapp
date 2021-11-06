@@ -1,4 +1,5 @@
 import 'package:cocktailapp/src/data/datasources/local/local_data_source.dart';
+import 'package:flutter/services.dart';
 import 'package:local_auth/local_auth.dart';
 
 class LocalDataSourceImpl implements LocalDataSource {
@@ -8,12 +9,16 @@ class LocalDataSourceImpl implements LocalDataSource {
   Future<bool> authenticateWithFingerprint() async {
     final isAvailable = await hasBiometrics();
     if (!isAvailable) return false;
-    return await _auth.authenticate(
-      biometricOnly: true,
-      localizedReason: "Scan fingerprint to Authenticate",
-      stickyAuth: true,
-      useErrorDialogs: true,
-    );
+    try {
+      return await _auth.authenticate(
+        biometricOnly: true,
+        localizedReason: "Scan fingerprint to Authenticate",
+        stickyAuth: true,
+        useErrorDialogs: true,
+      );
+    } on PlatformException catch (e) {
+      return false;
+    }
   }
 
   @override

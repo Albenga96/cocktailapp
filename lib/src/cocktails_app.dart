@@ -1,4 +1,5 @@
 import 'package:cocktailapp/src/config/themes/app_theme.dart';
+import 'package:cocktailapp/src/presentation/views/auth_view.dart';
 import 'package:flutter/material.dart';
 import 'presentation/views/home_view.dart';
 
@@ -11,7 +12,7 @@ class CocktailsApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Cocktails',
       theme: cocktailsLightTheme(),
-      home: const HomeView(),
+      home: AuthView(),
     );
   }
 }
