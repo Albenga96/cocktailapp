@@ -50,6 +50,7 @@ class _ResultViewState extends State<ResultView> {
                   )
                 : Consumer<Cocktails>(
                     builder: (ctx, cocktailsData, _) => ListView.builder(
+                        itemExtent: 100,
                         itemCount: cocktailsData.cocktails.length,
                         itemBuilder: (ctx, index) {
                           return ListTile(

@@ -15,9 +15,14 @@ import 'category_view.dart';
 class HomeView extends StatelessWidget {
   const HomeView({Key? key}) : super(key: key);
 
-  Future<void> _fetchCocktails(BuildContext context) async {
+  Future<void> _fetchAlcoholicCocktails(BuildContext context) async {
     await Provider.of<Cocktails>(context, listen: false)
         .fetchAlcoholicCocktails();
+  }
+
+  Future<void> _fetchCategoryCocktails(BuildContext context) async {
+    await Provider.of<Cocktails>(context, listen: false)
+        .fetchCategoryCocktails();
   }
 
   @override
@@ -39,7 +44,9 @@ class HomeView extends StatelessWidget {
             onPressed: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (ctx) => CategoryView(),
+                  builder: (ctx) => CategoryView(
+                    fetchCocktails: () => _fetchCategoryCocktails(context),
+                  ),
                 ),
               );
             },
@@ -87,13 +94,13 @@ class HomeView extends StatelessWidget {
                     text: "Alcolici",
                     asset: "assets/images/drink.svg",
                     filter: "Alcoholic",
-                    fetchCocktails: () => _fetchCocktails(context),
+                    fetchCocktails: () => _fetchAlcoholicCocktails(context),
                   ),
                   DrinkSelector(
                     text: "Analcolici",
                     asset: "assets/images/analcoholic.svg",
                     filter: "Non_Alcoholic",
-                    fetchCocktails: () => _fetchCocktails(context),
+                    fetchCocktails: () => _fetchAlcoholicCocktails(context),
                   )
                 ],
               ),
@@ -104,7 +111,7 @@ class HomeView extends StatelessWidget {
                 text: "Scegli tu per me",
                 asset: "assets/images/random.svg",
                 filter: "Alcoholic",
-                fetchCocktails: () => _fetchCocktails(context),
+                fetchCocktails: () => _fetchAlcoholicCocktails(context),
               )
             ],
           ),
