@@ -23,7 +23,7 @@ class CocktailsApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Cocktails',
         theme: cocktailsLightTheme(),
-        home: AuthView(), //TODO: Authview()
+        home: AuthView(),
       ),
     );
   }

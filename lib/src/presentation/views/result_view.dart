@@ -1,6 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cocktailapp/src/config/themes/app_theme.dart';
 import 'package:cocktailapp/src/config/themes/cocktails_colors.dart';
-import 'package:cocktailapp/src/domain/entities/cocktail_entity.dart';
 import 'package:cocktailapp/src/presentation/providers/cocktails.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -23,11 +23,10 @@ class _ResultViewState extends State<ResultView> {
   @override
   void initState() {
     Provider.of<Cocktails>(context, listen: false).filter = widget.filter;
-
     super.initState();
   }
 
-  Future<void> _refreshCocktails(BuildContext context) async {
+  Future<void> _fetchCocktails(BuildContext context) async {
     await Provider.of<Cocktails>(context, listen: false)
         .fetchAlcoholicCocktails();
   }
@@ -44,7 +43,7 @@ class _ResultViewState extends State<ResultView> {
         ),
       ),
       body: FutureBuilder(
-        future: _refreshCocktails(context),
+        future: _fetchCocktails(context),
         builder: (context, snapshot) =>
             snapshot.connectionState == ConnectionState.waiting
                 ? Center(
@@ -55,6 +54,23 @@ class _ResultViewState extends State<ResultView> {
                         itemCount: cocktailsData.cocktails.length,
                         itemBuilder: (ctx, index) {
                           return ListTile(
+                            leading: CircleAvatar(
+                              backgroundColor:
+                                  CocktailsColors.cocktailsSecondaryColor,
+                              child: CachedNetworkImage(
+                                imageUrl: cocktailsData
+                                    .cocktails[index].drinkThumbnail,
+                                placeholder: (context, url) => Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: CircularProgressIndicator(
+                                    valueColor: AlwaysStoppedAnimation<Color>(
+                                      CocktailsColors.cocktailAccentColor,
+                                    ),
+                                  ),
+                                ),
+                                fit: BoxFit.fill,
+                              ),
+                            ),
                             title: Text(
                               cocktailsData.cocktails[index].drinkName,
                               style: cocktailsLightTheme().textTheme.headline4,
