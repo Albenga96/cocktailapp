@@ -2,6 +2,8 @@ import 'package:cocktailapp/src/data/models/cocktail.dart';
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 
+part 'remote_data_source.g.dart';
+
 @RestApi(baseUrl: "https://www.thecocktaildb.com/api/json/v1/1")
 abstract class RemoteDataSource {
   factory RemoteDataSource(Dio dio, {String baseUrl}) = _RemoteDataSource;

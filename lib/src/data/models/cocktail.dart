@@ -2,14 +2,14 @@ import 'package:json_annotation/json_annotation.dart';
 
 @JsonSerializable()
 class Cocktail {
-  String strDrink;
-  String strDrinkThumb;
-  String idDrink;
+  String? strDrink;
+  String? strDrinkThumb;
+  String? idDrink;
 
   Cocktail({
-    required this.strDrink,
-    required this.strDrinkThumb,
-    required this.idDrink,
+    this.strDrink,
+    this.strDrinkThumb,
+    this.idDrink,
   });
 
   factory Cocktail.fromJson(Map<String, dynamic> json) =>
