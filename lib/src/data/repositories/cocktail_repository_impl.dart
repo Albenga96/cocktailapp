@@ -1,5 +1,6 @@
 import 'package:cocktailapp/src/data/datasources/remote/remote_data_source.dart';
 import 'package:cocktailapp/src/data/models/cocktail.dart';
+import 'package:cocktailapp/src/domain/entities/cocktail_entity.dart';
 import 'package:cocktailapp/src/domain/repositories/cocktail_repository.dart';
 import 'package:injectable/injectable.dart';
 
@@ -10,10 +11,24 @@ class CocktailRepositoryImpl implements CocktailRepository {
   CocktailRepositoryImpl(this._remoteDataSource);
 
   @override
-  Future<List<Cocktail>> getAlcoholicCocktails(String alcoholic) =>
-      _remoteDataSource.getAlcoholicCocktails(alcoholic);
+  Future<List<CocktailEntity>> getAlcoholicCocktails(String alcoholic) async {
+    return _remoteDataSource.getAlcoholicCocktails(alcoholic).then(
+          (cocktails) => cocktails
+              .map(
+                (cocktail) => cocktail.toCocktailEntity,
+              )
+              .toList(),
+        );
+  }
 
   @override
-  Future<List<Cocktail>> getCategoryCocktails(String category) =>
-      _remoteDataSource.getCategoryCocktails(category);
+  Future<List<CocktailEntity>> getCategoryCocktails(String category) async {
+    return _remoteDataSource.getCategoryCocktails(category).then(
+          (cocktails) => cocktails
+              .map(
+                (cocktail) => cocktail.toCocktailEntity,
+              )
+              .toList(),
+        );
+  }
 }

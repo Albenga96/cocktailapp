@@ -1,6 +1,6 @@
-import '../../data/models/cocktail.dart';
+import 'package:cocktailapp/src/domain/entities/cocktail_entity.dart';
 
 abstract class CocktailRepository {
-  Future<List<Cocktail>> getAlcoholicCocktails(String alcoholic);
-  Future<List<Cocktail>> getCategoryCocktails(String category);
+  Future<List<CocktailEntity>> getAlcoholicCocktails(String alcoholic);
+  Future<List<CocktailEntity>> getCategoryCocktails(String category);
 }
