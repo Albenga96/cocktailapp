@@ -1,15 +1,17 @@
 import 'package:cocktailapp/src/config/themes/cocktails_colors.dart';
 import 'package:cocktailapp/src/config/themes/cocktails_text_sizes.dart';
+import 'package:cocktailapp/src/core/utils/constant.dart';
 import 'package:flutter/material.dart';
 
 ThemeData cocktailsLightTheme() => ThemeData(
+      fontFamily: kNunitoFontName,
       primaryColor: CocktailsColors.cocktailsSecondaryColor,
       scaffoldBackgroundColor: CocktailsColors.cocktailsPrimaryColor,
       textTheme: const TextTheme(
         headline6: TextStyle(
-          fontSize: CocktailTextSizes.textBig,
+          fontFamily: kAllisonFontName,
+          fontSize: CocktailTextSizes.textHuge,
           color: CocktailsColors.cocktailsSecondaryColor,
-          fontWeight: FontWeight.bold,
         ),
         headline4: TextStyle(
           fontSize: CocktailTextSizes.textMedium,
