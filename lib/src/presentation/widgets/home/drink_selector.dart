@@ -3,6 +3,7 @@ import 'package:cocktailapp/src/config/themes/cocktails_colors.dart';
 import 'package:cocktailapp/src/config/themes/cocktails_margins.dart';
 import 'package:cocktailapp/src/config/themes/cocktails_sizes.dart';
 import 'package:cocktailapp/src/presentation/views/result_view.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -12,11 +13,13 @@ class DrinkSelector extends StatelessWidget {
     required this.text,
     required this.asset,
     required this.filter,
+    required this.fetchCocktails,
   }) : super(key: key);
 
   final String text;
   final String asset;
   final String filter;
+  final AsyncCallback fetchCocktails;
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +30,7 @@ class DrinkSelector extends StatelessWidget {
             builder: (ctx) => ResultView(
               title: text,
               filter: filter,
+              fetchCocktails: fetchCocktails,
             ),
           ),
         );

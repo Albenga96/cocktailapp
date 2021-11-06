@@ -1,18 +1,22 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
 import 'package:cocktailapp/src/config/themes/app_theme.dart';
 import 'package:cocktailapp/src/config/themes/cocktails_colors.dart';
 import 'package:cocktailapp/src/presentation/providers/cocktails.dart';
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class ResultView extends StatefulWidget {
   final String title;
   final String filter;
+  final AsyncCallback fetchCocktails;
 
   const ResultView({
     Key? key,
     required this.title,
     required this.filter,
+    required this.fetchCocktails,
   }) : super(key: key);
 
   @override
@@ -24,11 +28,6 @@ class _ResultViewState extends State<ResultView> {
   void initState() {
     Provider.of<Cocktails>(context, listen: false).filter = widget.filter;
     super.initState();
-  }
-
-  Future<void> _fetchCocktails(BuildContext context) async {
-    await Provider.of<Cocktails>(context, listen: false)
-        .fetchAlcoholicCocktails();
   }
 
   @override
@@ -43,7 +42,7 @@ class _ResultViewState extends State<ResultView> {
         ),
       ),
       body: FutureBuilder(
-        future: _fetchCocktails(context),
+        future: widget.fetchCocktails(),
         builder: (context, snapshot) =>
             snapshot.connectionState == ConnectionState.waiting
                 ? Center(

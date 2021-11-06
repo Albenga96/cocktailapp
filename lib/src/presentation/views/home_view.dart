@@ -1,15 +1,24 @@
 import 'package:cocktailapp/src/config/themes/cocktails_margins.dart';
 import 'package:cocktailapp/src/config/themes/cocktails_sizes.dart';
+import 'package:cocktailapp/src/presentation/providers/cocktails.dart';
 import 'package:cocktailapp/src/presentation/utils/strings.dart';
 import 'package:cocktailapp/src/presentation/widgets/home/drink_selector.dart';
+import 'package:provider/provider.dart';
 
 import '../../config/themes/app_theme.dart';
 import '../../config/themes/cocktails_colors.dart';
 import '../widgets/home/cocktail_drawer.dart';
 import 'package:flutter/material.dart';
 
+import 'category_view.dart';
+
 class HomeView extends StatelessWidget {
   const HomeView({Key? key}) : super(key: key);
+
+  Future<void> _fetchCocktails(BuildContext context) async {
+    await Provider.of<Cocktails>(context, listen: false)
+        .fetchAlcoholicCocktails();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +34,20 @@ class HomeView extends StatelessWidget {
             style: cocktailsLightTheme().textTheme.headline6,
           ),
         ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (ctx) => CategoryView(),
+                ),
+              );
+            },
+            icon: Icon(
+              Icons.filter_list,
+            ),
+          ),
+        ],
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -59,16 +82,18 @@ class HomeView extends StatelessWidget {
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: const [
+                children: [
                   DrinkSelector(
                     text: "Alcolici",
                     asset: "assets/images/drink.svg",
                     filter: "Alcoholic",
+                    fetchCocktails: () => _fetchCocktails(context),
                   ),
                   DrinkSelector(
                     text: "Analcolici",
                     asset: "assets/images/analcoholic.svg",
                     filter: "Non_Alcoholic",
+                    fetchCocktails: () => _fetchCocktails(context),
                   )
                 ],
               ),
@@ -79,6 +104,7 @@ class HomeView extends StatelessWidget {
                 text: "Scegli tu per me",
                 asset: "assets/images/random.svg",
                 filter: "Alcoholic",
+                fetchCocktails: () => _fetchCocktails(context),
               )
             ],
           ),
