@@ -1,7 +1,11 @@
+import 'dart:io';
+
 import 'package:cocktailapp/src/config/themes/app_theme.dart';
 import 'package:cocktailapp/src/config/themes/cocktails_colors.dart';
 import 'package:cocktailapp/src/config/themes/cocktails_sizes.dart';
+import 'package:cocktailapp/src/presentation/views/auth_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class CocktailDrawer extends StatelessWidget {
   const CocktailDrawer({Key? key}) : super(key: key);
@@ -28,9 +32,13 @@ class CocktailDrawer extends StatelessWidget {
             ),
           ),
           ListTile(
-            onTap: () {},
+            onTap: () => Navigator.of(context).pushReplacement(
+              MaterialPageRoute(
+                builder: (ctx) => AuthView(),
+              ),
+            ),
             title: Text(
-              "Scegli per me",
+              "Esci",
               style: cocktailsLightTheme().textTheme.headline3,
             ),
           ),

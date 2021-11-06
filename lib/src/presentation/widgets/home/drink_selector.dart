@@ -1,4 +1,5 @@
 import 'package:cocktailapp/src/config/themes/app_theme.dart';
+import 'package:cocktailapp/src/config/themes/cocktails_colors.dart';
 import 'package:cocktailapp/src/config/themes/cocktails_margins.dart';
 import 'package:cocktailapp/src/config/themes/cocktails_sizes.dart';
 import 'package:cocktailapp/src/presentation/views/result_view.dart';
@@ -30,14 +31,24 @@ class DrinkSelector extends StatelessWidget {
       child: Column(
         children: [
           CircleAvatar(
+            backgroundColor: CocktailsColors.cocktailAccentColor,
             radius: CocktailSizes.sizebig,
-            backgroundColor: Colors.white,
             child: Padding(
               padding: const EdgeInsets.all(
-                CocktailsMargins.coctailsMarginSmall,
+                CocktailsMargins.coctailsMarginVerySmall,
               ),
-              child: SvgPicture.asset(
-                asset,
+              child: CircleAvatar(
+                radius: CocktailSizes.sizebig,
+                backgroundColor: Colors.white,
+                child: Padding(
+                  padding: const EdgeInsets.all(
+                    CocktailsMargins.coctailsMarginSmall,
+                  ),
+                  child: SvgPicture.asset(
+                    asset,
+                    color: CocktailsColors.cocktailsPrimaryColor,
+                  ),
+                ),
               ),
             ),
           ),
