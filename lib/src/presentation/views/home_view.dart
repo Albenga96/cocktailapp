@@ -45,7 +45,7 @@ class HomeView extends StatelessWidget {
                 child: TextFormField(
                   decoration: InputDecoration.collapsed(
                     hintText: Strings.searchCocktailText,
-                    hintStyle: cocktailsLightTheme().textTheme.headline4,
+                    hintStyle: cocktailsLightTheme().textTheme.headline3,
                   ),
                 ),
               ),
@@ -56,9 +56,11 @@ class HomeView extends StatelessWidget {
             children: const [
               DrinkSelector(
                 text: "Alcolici",
+                asset: "assets/images/cocktail.svg",
               ),
               DrinkSelector(
                 text: "Analcolici",
+                asset: "assets/images/drink.svg",
               )
             ],
           ),

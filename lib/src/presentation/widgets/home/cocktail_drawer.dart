@@ -11,14 +11,12 @@ class CocktailDrawer extends StatelessWidget {
     return Drawer(
       child: ListView(
         children: [
-          const DrawerHeader(
+          DrawerHeader(
             child: Center(
               child: CircleAvatar(
+                backgroundImage: AssetImage("assets/images/logo.png"),
                 backgroundColor: CocktailsColors.cocktailsPrimaryColor,
                 radius: CocktailSizes.sizebig,
-                child: Icon(
-                  Icons.photo,
-                ),
               ),
             ),
           ),
