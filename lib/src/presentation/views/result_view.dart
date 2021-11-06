@@ -21,6 +21,7 @@ class ResultView extends StatelessWidget {
           style: cocktailsLightTheme().textTheme.headline6,
         ),
       ),
+      body: ListView(),
     );
   }
 }

@@ -46,6 +46,7 @@ class DrinkSelector extends StatelessWidget {
           ),
           Text(
             text,
+            textAlign: TextAlign.center,
             style: cocktailsLightTheme().textTheme.headline4,
           ),
         ],

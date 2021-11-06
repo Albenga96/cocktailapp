@@ -54,17 +54,38 @@ class HomeView extends StatelessWidget {
               ),
             ),
           ),
-          Row(
+          Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: const [
-              DrinkSelector(
-                text: "Alcolici",
-                asset: "assets/images/cocktail.svg",
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: const [
+                  DrinkSelector(
+                    text: "Alcolici",
+                    asset: "assets/images/cocktail.svg",
+                  ),
+                  DrinkSelector(
+                    text: "Analcolici",
+                    asset: "assets/images/drink.svg",
+                  )
+                ],
               ),
-              DrinkSelector(
-                text: "Analcolici",
-                asset: "assets/images/drink.svg",
-              )
+              SizedBox(
+                height: CocktailSizes.sizebig,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: const [
+                  DrinkSelector(
+                    text: "Ordinary",
+                    asset: "assets/images/cocktail.svg",
+                  ),
+                  DrinkSelector(
+                    text: "Cocktail",
+                    asset: "assets/images/drink.svg",
+                  )
+                ],
+              ),
             ],
           ),
         ],
