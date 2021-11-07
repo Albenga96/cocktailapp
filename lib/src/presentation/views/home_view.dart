@@ -1,16 +1,18 @@
+import 'package:cocktailapp/src/presentation/views/search_view.dart';
+import 'package:cocktailapp/src/presentation/widgets/home/select_search.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
 import 'package:cocktailapp/src/config/themes/cocktails_margins.dart';
 import 'package:cocktailapp/src/config/themes/cocktails_sizes.dart';
 import 'package:cocktailapp/src/presentation/providers/cocktails.dart';
 import 'package:cocktailapp/src/presentation/utils/strings.dart';
 import 'package:cocktailapp/src/presentation/widgets/home/drink_selector.dart';
 import 'package:cocktailapp/src/presentation/widgets/home/random_cocktail.dart';
-import 'package:provider/provider.dart';
 
 import '../../config/themes/app_theme.dart';
 import '../../config/themes/cocktails_colors.dart';
 import '../widgets/home/cocktail_drawer.dart';
-import 'package:flutter/material.dart';
-
 import 'category_view.dart';
 
 class HomeView extends StatelessWidget {
@@ -29,6 +31,12 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: CocktailsColors.cocktailAccentColor,
+        child: Icon(Icons.qr_code),
+        tooltip: "Qr_Scan",
+      ),
       drawer: const CocktailDrawer(),
       appBar: AppBar(
         centerTitle: true,
@@ -57,33 +65,7 @@ class HomeView extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: CocktailsMargins.cocktailMarginBig,
-            ),
-            child: Card(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(
-                  CocktailSizes.sizeSmall,
-                ),
-              ),
-              elevation: CocktailsMargins.coctailsMarginSmall,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  vertical: CocktailsMargins.cocktailMarginMedium,
-                  horizontal: CocktailsMargins.cocktailMarginBig,
-                ),
-                child: TextFormField(
-                  decoration: InputDecoration.collapsed(
-                    hintText: Strings.searchCocktailText,
-                    hintStyle: cocktailsLightTheme().textTheme.headline3,
-                  ),
-                ),
-              ),
-            ),
-          ),
           Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -111,6 +93,22 @@ class HomeView extends StatelessWidget {
               )
             ],
           ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              SelectSearch(
+                text: "Cerca per nome",
+                isNameSearch: true,
+              ),
+              SizedBox(
+                height: CocktailSizes.sizeMedium,
+              ),
+              SelectSearch(
+                text: "Cerca per ingrediente",
+                isNameSearch: false,
+              )
+            ],
+          )
         ],
       ),
     );

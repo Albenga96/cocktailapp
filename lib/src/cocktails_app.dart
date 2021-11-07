@@ -18,6 +18,8 @@ class CocktailsApp extends StatelessWidget {
           create: (ctx) => Cocktails(
             GetIt.instance.get(),
             GetIt.instance.get(),
+            GetIt.instance.get(),
+            GetIt.instance.get(),
           ),
         ),
         ChangeNotifierProvider(

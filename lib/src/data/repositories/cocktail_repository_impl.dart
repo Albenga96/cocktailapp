@@ -49,4 +49,26 @@ class CocktailRepositoryImpl implements CocktailRepository {
               cocktailDetailsResponse.drinks[0].toCocktailDetailsEntity,
         );
   }
+
+  @override
+  Future<List<CocktailEntity>> searchCocktailsByIngredient(String ingredient) {
+    return _remoteDataSource.searchCocktailsByIngredient(ingredient).then(
+          (cocktailResponse) => cocktailResponse.drinks
+              .map(
+                (cocktail) => cocktail.toCocktailEntity,
+              )
+              .toList(),
+        );
+  }
+
+  @override
+  Future<List<CocktailEntity>> searchCocktailsByName(String name) {
+    return _remoteDataSource.searchCocktailsByName(name).then(
+          (cocktailResponse) => cocktailResponse.drinks
+              .map(
+                (cocktail) => cocktail.toCocktailEntity,
+              )
+              .toList(),
+        );
+  }
 }

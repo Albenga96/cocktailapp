@@ -79,6 +79,38 @@ class _RemoteDataSource implements RemoteDataSource {
     return value;
   }
 
+  @override
+  Future<CocktailResponse> searchCocktailsByName(name) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r's': name};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<CocktailResponse>(
+            Options(method: 'GET', headers: _headers, extra: _extra)
+                .compose(_dio.options, '/search.php',
+                    queryParameters: queryParameters, data: _data)
+                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = CocktailResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<CocktailResponse> searchCocktailsByIngredient(ingredient) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'i': ingredient};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<CocktailResponse>(
+            Options(method: 'GET', headers: _headers, extra: _extra)
+                .compose(_dio.options, '/filter.php',
+                    queryParameters: queryParameters, data: _data)
+                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = CocktailResponse.fromJson(_result.data!);
+    return value;
+  }
+
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
     if (T != dynamic &&
         !(requestOptions.responseType == ResponseType.bytes ||
