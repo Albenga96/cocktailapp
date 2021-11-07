@@ -27,4 +27,7 @@ abstract class RemoteDataSource {
   Future<CocktailDetailsResponse> getCocktailDetails(
     @Query("i") String drinkId,
   );
+
+  @GET("/random.php")
+  Future<CocktailDetailsResponse> getRandomCocktail();
 }

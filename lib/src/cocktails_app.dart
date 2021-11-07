@@ -23,6 +23,7 @@ class CocktailsApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (ctx) => CocktailDetails(
             GetIt.instance.get(),
+            GetIt.instance.get(),
           ),
         ),
       ],

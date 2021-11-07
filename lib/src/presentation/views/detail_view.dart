@@ -1,5 +1,4 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cocktailapp/src/presentation/widgets/detail/info_column.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -8,13 +7,16 @@ import 'package:cocktailapp/src/config/themes/cocktails_colors.dart';
 import 'package:cocktailapp/src/config/themes/cocktails_margins.dart';
 import 'package:cocktailapp/src/config/themes/cocktails_sizes.dart';
 import 'package:cocktailapp/src/presentation/providers/cocktail_details.dart';
+import 'package:cocktailapp/src/presentation/widgets/detail/info_column.dart';
 
 class DetailView extends StatefulWidget {
   final String drinkId;
+  final bool isRandom;
 
   const DetailView({
     Key? key,
     required this.drinkId,
+    required this.isRandom,
   }) : super(key: key);
 
   @override
@@ -27,10 +29,17 @@ class _DetailViewState extends State<DetailView> {
         .fetchCocktailDetails();
   }
 
+  Future<void> _fetchRandomCocktails(BuildContext context) async {
+    await Provider.of<CocktailDetails>(context, listen: false)
+        .fetchRandomCocktail();
+  }
+
   @override
   void initState() {
-    Provider.of<CocktailDetails>(context, listen: false).drinkId =
-        widget.drinkId;
+    if (!widget.isRandom) {
+      Provider.of<CocktailDetails>(context, listen: false).drinkId =
+          widget.drinkId;
+    }
     super.initState();
   }
 
@@ -56,7 +65,9 @@ class _DetailViewState extends State<DetailView> {
         backgroundColor: CocktailsColors.cocktailsPrimaryColor,
       ),
       body: FutureBuilder(
-        future: _fetchCocktailDetails(context),
+        future: widget.isRandom
+            ? _fetchRandomCocktails(context)
+            : _fetchCocktailDetails(context),
         builder: (context, snapshot) {
           return snapshot.connectionState == ConnectionState.waiting
               ? Center(

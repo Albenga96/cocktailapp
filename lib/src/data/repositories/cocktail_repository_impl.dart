@@ -41,4 +41,12 @@ class CocktailRepositoryImpl implements CocktailRepository {
               cocktailDetailsResponse.drinks[0].toCocktailDetailsEntity,
         );
   }
+
+  @override
+  Future<CocktailDetailsEntity> getRandomCocktail() async {
+    return _remoteDataSource.getRandomCocktail().then(
+          (cocktailDetailsResponse) =>
+              cocktailDetailsResponse.drinks[0].toCocktailDetailsEntity,
+        );
+  }
 }

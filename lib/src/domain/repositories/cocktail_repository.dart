@@ -5,4 +5,5 @@ abstract class CocktailRepository {
   Future<List<CocktailEntity>> getAlcoholicCocktails(String alcoholic);
   Future<List<CocktailEntity>> getCategoryCocktails(String category);
   Future<CocktailDetailsEntity> getCocktailDetails(String drinkId);
+  Future<CocktailDetailsEntity> getRandomCocktail();
 }

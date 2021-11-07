@@ -62,6 +62,7 @@ class _ResultViewState extends State<ResultView> {
                             Navigator.of(context).push(
                               MaterialPageRoute(
                                 builder: (ctx) => DetailView(
+                                  isRandom: false,
                                   drinkId:
                                       cocktailsData.cocktails[index].drinkId,
                                 ),

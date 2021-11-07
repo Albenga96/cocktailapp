@@ -3,6 +3,7 @@ import 'package:cocktailapp/src/config/themes/cocktails_sizes.dart';
 import 'package:cocktailapp/src/presentation/providers/cocktails.dart';
 import 'package:cocktailapp/src/presentation/utils/strings.dart';
 import 'package:cocktailapp/src/presentation/widgets/home/drink_selector.dart';
+import 'package:cocktailapp/src/presentation/widgets/home/random_cocktail.dart';
 import 'package:provider/provider.dart';
 
 import '../../config/themes/app_theme.dart';
@@ -104,11 +105,9 @@ class HomeView extends StatelessWidget {
               SizedBox(
                 height: CocktailSizes.sizebig,
               ),
-              DrinkSelector(
-                text: "Scegli tu per me",
+              RandomCocktail(
                 asset: "assets/images/random.svg",
-                filter: "Alcoholic",
-                fetchCocktails: () => _fetchAlcoholicCocktails(context),
+                text: "Scegli tu per me",
               )
             ],
           ),
