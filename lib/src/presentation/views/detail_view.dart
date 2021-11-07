@@ -107,6 +107,15 @@ class _DetailViewState extends State<DetailView> {
                       ),
                       Center(
                         child: Text(
+                          "Ingredienti",
+                          style: cocktailsLightTheme().textTheme.headline6,
+                        ),
+                      ),
+                      SizedBox(
+                        height: CocktailSizes.sizeMedium,
+                      ),
+                      Center(
+                        child: Text(
                           "Istruzioni",
                           style: cocktailsLightTheme().textTheme.headline6,
                         ),
