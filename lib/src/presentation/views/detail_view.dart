@@ -83,34 +83,99 @@ class _DetailViewState extends State<DetailView> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          Text(
-                            cocktailDetailsData.cocktailDetails.drinkCategory,
-                            style: cocktailsLightTheme().textTheme.headline4,
+                          Column(
+                            children: [
+                              Text(
+                                "Cat.",
+                                style:
+                                    cocktailsLightTheme().textTheme.headline6,
+                              ),
+                              SizedBox(
+                                height: CocktailsMargins.coctailsMarginSmall,
+                              ),
+                              Text(
+                                cocktailDetailsData
+                                    .cocktailDetails.drinkCategory,
+                                style:
+                                    cocktailsLightTheme().textTheme.headline4,
+                              ),
+                            ],
                           ),
-                          Text(
-                            cocktailDetailsData.cocktailDetails.drinkAlcoholic,
-                            style: cocktailsLightTheme().textTheme.headline4,
+                          Column(
+                            children: [
+                              Text(
+                                "Glass",
+                                style:
+                                    cocktailsLightTheme().textTheme.headline6,
+                              ),
+                              SizedBox(
+                                height: CocktailsMargins.coctailsMarginSmall,
+                              ),
+                              Text(
+                                cocktailDetailsData.cocktailDetails.drinkGlass,
+                                style:
+                                    cocktailsLightTheme().textTheme.headline4,
+                              ),
+                            ],
+                          ),
+                          Column(
+                            children: [
+                              Text(
+                                "Type",
+                                style:
+                                    cocktailsLightTheme().textTheme.headline6,
+                              ),
+                              SizedBox(
+                                height: CocktailsMargins.coctailsMarginSmall,
+                              ),
+                              Text(
+                                cocktailDetailsData
+                                    .cocktailDetails.drinkAlcoholic,
+                                style:
+                                    cocktailsLightTheme().textTheme.headline4,
+                              ),
+                            ],
                           ),
                         ],
                       ),
-                      SizedBox(
-                        height: CocktailSizes.sizeSmall,
-                      ),
-                      Center(
-                        child: Text(
-                          cocktailDetailsData.cocktailDetails.drinkGlass,
-                          style: cocktailsLightTheme().textTheme.headline4,
-                        ),
-                      ),
-                      SizedBox(
-                        height: CocktailSizes.sizeMedium,
-                      ),
+                      SizedBox(height: CocktailSizes.sizeMedium),
                       Center(
                         child: Text(
                           "Ingredienti",
                           style: cocktailsLightTheme().textTheme.headline6,
                         ),
                       ),
+                      ...List.generate(
+                          cocktailDetailsData
+                              .cocktailDetails.ingredients.length, (index) {
+                        if (cocktailDetailsData.cocktailDetails.ingredients !=
+                            "") {
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(
+                              vertical:
+                                  CocktailsMargins.coctailsMarginVerySmall,
+                              horizontal: CocktailsMargins.cocktailMarginBig,
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  cocktailDetailsData
+                                      .cocktailDetails.ingredients[index]!,
+                                  style:
+                                      cocktailsLightTheme().textTheme.headline4,
+                                ),
+                                Text(
+                                  cocktailDetailsData
+                                      .cocktailDetails.measures[index]!,
+                                  style:
+                                      cocktailsLightTheme().textTheme.headline4,
+                                )
+                              ],
+                            ),
+                          );
+                        }
+                      }),
                       SizedBox(
                         height: CocktailSizes.sizeMedium,
                       ),

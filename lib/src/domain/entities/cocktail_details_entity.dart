@@ -6,6 +6,9 @@ class CocktailDetailsEntity {
   String drinkAlcoholic;
   String drinkGlass;
   String drinkInstructionsIT;
+  List<String?> ingredients;
+
+  List<String?> measures;
 
   CocktailDetailsEntity({
     required this.drinkName,
@@ -15,5 +18,7 @@ class CocktailDetailsEntity {
     required this.drinkAlcoholic,
     required this.drinkGlass,
     required this.drinkInstructionsIT,
+    required this.ingredients,
+    required this.measures,
   });
 }

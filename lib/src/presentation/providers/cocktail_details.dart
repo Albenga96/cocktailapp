@@ -15,6 +15,8 @@ class CocktailDetails with ChangeNotifier {
     drinkAlcoholic: "",
     drinkGlass: "",
     drinkInstructionsIT: "",
+    ingredients: [],
+    measures: [],
   );
 
   CocktailDetailsEntity get cocktailDetails {

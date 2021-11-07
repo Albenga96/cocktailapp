@@ -1,4 +1,3 @@
-import 'package:cocktailapp/src/data/models/cocktail.dart';
 import 'package:cocktailapp/src/data/models/cocktail_details_response.dart';
 import 'package:cocktailapp/src/data/models/cocktail_response.dart';
 import 'package:dio/dio.dart';
