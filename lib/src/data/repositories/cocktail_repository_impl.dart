@@ -1,5 +1,7 @@
 import 'package:cocktailapp/src/data/datasources/remote/remote_data_source.dart';
 import 'package:cocktailapp/src/data/models/cocktail.dart';
+import 'package:cocktailapp/src/data/models/cocktail_details.dart';
+import 'package:cocktailapp/src/domain/entities/cocktail_details_entity.dart';
 import 'package:cocktailapp/src/domain/entities/cocktail_entity.dart';
 import 'package:cocktailapp/src/domain/repositories/cocktail_repository.dart';
 import 'package:injectable/injectable.dart';
@@ -29,6 +31,14 @@ class CocktailRepositoryImpl implements CocktailRepository {
                 (cocktail) => cocktail.toCocktailEntity,
               )
               .toList(),
+        );
+  }
+
+  @override
+  Future<CocktailDetailsEntity> getCocktailDetails(String drinkId) async {
+    return _remoteDataSource.getCocktailDetails(drinkId).then(
+          (cocktailDetailsResponse) =>
+              cocktailDetailsResponse.drinks[0].toCocktailDetailsEntity,
         );
   }
 }

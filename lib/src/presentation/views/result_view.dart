@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cocktailapp/src/config/themes/cocktails_margins.dart';
 import 'package:cocktailapp/src/config/themes/cocktails_sizes.dart';
 import 'package:cocktailapp/src/presentation/views/detail_view.dart';
 import 'package:flutter/foundation.dart';
@@ -61,8 +62,8 @@ class _ResultViewState extends State<ResultView> {
                             Navigator.of(context).push(
                               MaterialPageRoute(
                                 builder: (ctx) => DetailView(
-                                  title:
-                                      cocktailsData.cocktails[index].drinkName,
+                                  drinkId:
+                                      cocktailsData.cocktails[index].drinkId,
                                 ),
                               ),
                             );
@@ -76,7 +77,9 @@ class _ResultViewState extends State<ResultView> {
                             ),
                             color: Colors.grey.withOpacity(0.5),
                             child: Padding(
-                              padding: const EdgeInsets.all(4.0),
+                              padding: const EdgeInsets.all(
+                                CocktailsMargins.coctailsMarginVerySmall,
+                              ),
                               child: ListTile(
                                 leading: CachedNetworkImage(
                                   imageUrl: cocktailsData
@@ -89,21 +92,19 @@ class _ResultViewState extends State<ResultView> {
                                     backgroundImage: imageProvider,
                                   ),
                                   placeholder: (context, url) => Padding(
-                                    padding: const EdgeInsets.all(8.0),
+                                    padding: EdgeInsets.all(
+                                      CocktailsMargins.coctailsMarginSmall,
+                                    ),
                                     child: CircularProgressIndicator(
                                       valueColor: AlwaysStoppedAnimation<Color>(
                                           CocktailsColors.cocktailAccentColor),
                                     ),
                                   ),
                                 ),
-                                title: Hero(
-                                  tag: "cocktail-name",
-                                  child: Text(
-                                    cocktailsData.cocktails[index].drinkName,
-                                    style: cocktailsLightTheme()
-                                        .textTheme
-                                        .headline4,
-                                  ),
+                                title: Text(
+                                  cocktailsData.cocktails[index].drinkName,
+                                  style:
+                                      cocktailsLightTheme().textTheme.headline4,
                                 ),
                               ),
                             ),

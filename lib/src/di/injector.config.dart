@@ -14,7 +14,8 @@ import '../data/repositories/cocktail_repository_impl.dart' as _i7;
 import '../domain/repositories/cocktail_repository.dart' as _i6;
 import '../domain/usecase/get_alcoholic_cocktails_use_case.dart' as _i8;
 import '../domain/usecase/get_category_cocktails_use_case.dart' as _i9;
-import 'app_module.dart' as _i10; // ignore_for_file: unnecessary_lambdas
+import '../domain/usecase/get_cocktail_details_use_case.dart' as _i10;
+import 'app_module.dart' as _i11; // ignore_for_file: unnecessary_lambdas
 
 // ignore_for_file: lines_longer_than_80_chars
 /// initializes the registration of provided dependencies inside of [GetIt]
@@ -31,7 +32,9 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
       () => _i8.GetAlcoholicCocktailsUseCase(get<_i6.CocktailRepository>()));
   gh.factory<_i9.GetCategoryCocktailsUseCase>(
       () => _i9.GetCategoryCocktailsUseCase(get<_i6.CocktailRepository>()));
+  gh.factory<_i10.GetCocktailDetailsUseCase>(
+      () => _i10.GetCocktailDetailsUseCase(get<_i6.CocktailRepository>()));
   return get;
 }
 
-class _$AppModule extends _i10.AppModule {}
+class _$AppModule extends _i11.AppModule {}

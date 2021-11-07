@@ -1,4 +1,5 @@
 import 'package:cocktailapp/src/data/models/cocktail.dart';
+import 'package:cocktailapp/src/data/models/cocktail_details_response.dart';
 import 'package:cocktailapp/src/data/models/cocktail_response.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
@@ -21,5 +22,10 @@ abstract class RemoteDataSource {
   @GET("/filter.php")
   Future<CocktailResponse> getCategoryCocktails(
     @Query("c") String category,
+  );
+
+  @GET("/lookup.php")
+  Future<CocktailDetailsResponse> getCocktailDetails(
+    @Query("i") String drinkId,
   );
 }

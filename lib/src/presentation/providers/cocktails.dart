@@ -1,4 +1,3 @@
-import 'package:cocktailapp/src/data/models/cocktail.dart';
 import 'package:cocktailapp/src/domain/entities/cocktail_entity.dart';
 import 'package:cocktailapp/src/domain/usecase/get_alcoholic_cocktails_use_case.dart';
 import 'package:cocktailapp/src/domain/usecase/get_category_cocktails_use_case.dart';
@@ -26,6 +25,7 @@ class Cocktails with ChangeNotifier {
       _cocktails = await _alcoholicCocktailsUseCase(
         params: filter,
       );
+      notifyListeners();
     } catch (e) {
       throw ("Si è verificato un errore");
     }
@@ -36,6 +36,7 @@ class Cocktails with ChangeNotifier {
       _cocktails = await _categoryCocktailsUseCase(
         params: filter,
       );
+      notifyListeners();
     } catch (e) {
       throw ("Si è verificato un errore");
     }
