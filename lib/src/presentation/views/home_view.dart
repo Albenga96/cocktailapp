@@ -32,12 +32,9 @@ class HomeView extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: CocktailsColors.cocktailsPrimaryColor,
-        title: Hero(
-          tag: 'title',
-          child: Text(
-            Strings.homePageTitleText,
-            style: cocktailsLightTheme().textTheme.headline6,
-          ),
+        title: Text(
+          Strings.homePageTitleText,
+          style: cocktailsLightTheme().textTheme.headline6,
         ),
         actions: [
           IconButton(

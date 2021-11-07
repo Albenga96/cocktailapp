@@ -16,12 +16,9 @@ class AuthView extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Hero(
-              tag: 'title',
-              child: Text(
-                Strings.homePageTitleText,
-                style: cocktailsLightTheme().textTheme.headline6,
-              ),
+            Text(
+              Strings.homePageTitleText,
+              style: cocktailsLightTheme().textTheme.headline6,
             ),
             SizedBox(
               height: CocktailSizes.sizeMedium,
