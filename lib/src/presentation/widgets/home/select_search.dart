@@ -1,4 +1,5 @@
 import 'package:cocktailapp/src/config/themes/app_theme.dart';
+import 'package:cocktailapp/src/config/themes/cocktails_colors.dart';
 import 'package:cocktailapp/src/config/themes/cocktails_margins.dart';
 import 'package:cocktailapp/src/config/themes/cocktails_sizes.dart';
 import 'package:cocktailapp/src/presentation/views/search_view.dart';
@@ -29,8 +30,8 @@ class SelectSearch extends StatelessWidget {
       child: Container(
         width: CocktailSizes.sizeVeryHuge,
         decoration: BoxDecoration(
-          color: Colors.grey.withOpacity(
-            0.5,
+          border: Border.all(
+            color: CocktailsColors.cocktailAccentColor,
           ),
           borderRadius: BorderRadius.circular(
             CocktailSizes.sizeMedium,

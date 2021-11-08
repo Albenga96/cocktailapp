@@ -1,9 +1,8 @@
-import 'package:cocktailapp/src/presentation/views/search_view.dart';
+import 'package:cocktailapp/src/presentation/views/qr_view.dart';
 import 'package:cocktailapp/src/presentation/widgets/home/select_search.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:cocktailapp/src/config/themes/cocktails_margins.dart';
 import 'package:cocktailapp/src/config/themes/cocktails_sizes.dart';
 import 'package:cocktailapp/src/presentation/providers/cocktails.dart';
 import 'package:cocktailapp/src/presentation/utils/strings.dart';
@@ -32,7 +31,10 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (cxt) => QrView()));
+        },
         backgroundColor: CocktailsColors.cocktailAccentColor,
         child: Icon(Icons.qr_code),
         tooltip: "Qr_Scan",
