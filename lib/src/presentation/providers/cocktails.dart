@@ -32,6 +32,7 @@ class Cocktails with ChangeNotifier {
   String ingredient = '';
 
   Future<void> fetchAlcoholicCocktails() async {
+    _cocktails = [];
     try {
       _cocktails = await _alcoholicCocktailsUseCase(
         params: filter,
@@ -43,6 +44,7 @@ class Cocktails with ChangeNotifier {
   }
 
   Future<void> fetchCategoryCocktails() async {
+    _cocktails = [];
     try {
       _cocktails = await _categoryCocktailsUseCase(
         params: filter,
@@ -54,6 +56,7 @@ class Cocktails with ChangeNotifier {
   }
 
   Future<void> searchCocktailsByName() async {
+    _cocktails = [];
     try {
       _cocktails = await _searchCocktailsByNameUseCase(
         params: name,
@@ -66,6 +69,7 @@ class Cocktails with ChangeNotifier {
   }
 
   Future<void> searchCocktailsByIngredient() async {
+    _cocktails = [];
     try {
       _cocktails = await _searchCocktailsByIngredientUseCase(
         params: ingredient,
