@@ -1,4 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cocktailapp/src/domain/entities/cocktail_entity.dart';
+import 'package:cocktailapp/src/presentation/providers/favorite.dart';
 import 'package:cocktailapp/src/presentation/widgets/detail/qr_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -41,11 +43,14 @@ class _DetailViewState extends State<DetailView> {
       Provider.of<CocktailDetails>(context, listen: false).drinkId =
           widget.drinkId;
     }
+    Provider.of<FavoriteCocktails>(context, listen: false)
+        .initFavorites(widget.drinkId);
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    final cocktailFound = Provider.of<FavoriteCocktails>(context).cocktailFound;
     return FutureBuilder(
       future: widget.isRandom
           ? _fetchRandomCocktails(context)
@@ -77,9 +82,21 @@ class _DetailViewState extends State<DetailView> {
                       ),
                     ),
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        final cocktailDetails =
+                            Provider.of<CocktailDetails>(context, listen: false)
+                                .cocktailDetails;
+                        Provider.of<FavoriteCocktails>(context, listen: false)
+                            .toggleFavorite(
+                          CocktailEntity(
+                            drinkName: cocktailDetails.drinkName,
+                            drinkThumbnail: cocktailDetails.drinkThumbnail,
+                            drinkId: cocktailDetails.drinkId,
+                          ),
+                        );
+                      },
                       icon: Icon(
-                        Icons.star_outline,
+                        cocktailFound ? Icons.star : Icons.star_outline,
                       ),
                     )
                   ],

@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 import 'package:cocktailapp/src/domain/entities/cocktail_entity.dart';
@@ -70,14 +71,22 @@ class Cocktails with ChangeNotifier {
 
   Future<void> searchCocktailsByIngredient() async {
     _cocktails = [];
-    try {
-      _cocktails = await _searchCocktailsByIngredientUseCase(
-        params: ingredient,
-      );
-      notifyListeners();
-    } catch (e) {
-      print(e);
-      throw ("Si è verificato un errore");
+    if (ingredient.isNotEmpty) {
+      try {
+        _cocktails = await _searchCocktailsByIngredientUseCase(
+          params: ingredient,
+        );
+        notifyListeners();
+      } on DioError catch (exception) {
+        if (exception.type == DioErrorType.other) {
+          _cocktails = [];
+          notifyListeners();
+        } else {
+          throw ("Si è verificato un errore");
+        }
+      } catch (e) {
+        throw ("Si è verificato un errore");
+      }
     }
   }
 

@@ -8,4 +8,8 @@ abstract class CocktailRepository {
   Future<CocktailDetailsEntity> getRandomCocktail();
   Future<List<CocktailEntity>> searchCocktailsByName(String name);
   Future<List<CocktailEntity>> searchCocktailsByIngredient(String ingredient);
+  Future<void> insertFavorite(CocktailEntity cocktailEntity);
+  Future<List<CocktailEntity>> retrieveFavorites();
+  Future<void> deleteFavorite(String drinkId);
+  Future<CocktailEntity?> findFavoriteById(String drinkId);
 }

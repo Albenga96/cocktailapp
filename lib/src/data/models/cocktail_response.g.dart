@@ -8,8 +8,8 @@ part of 'cocktail_response.dart';
 
 CocktailResponse _$CocktailResponseFromJson(Map<String, dynamic> json) =>
     CocktailResponse(
-      (json['drinks'] as List<dynamic>)
-          .map((e) => Cocktail.fromJson(e as Map<String, dynamic>))
+      (json['drinks'] as List<dynamic>?)
+          ?.map((e) => Cocktail.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 

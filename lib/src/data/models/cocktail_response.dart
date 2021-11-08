@@ -5,7 +5,7 @@ part 'cocktail_response.g.dart';
 
 @JsonSerializable()
 class CocktailResponse {
-  final List<Cocktail> drinks;
+  final List<Cocktail>? drinks;
 
   CocktailResponse(this.drinks);
 
