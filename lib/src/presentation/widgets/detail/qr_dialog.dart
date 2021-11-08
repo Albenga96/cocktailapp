@@ -1,4 +1,3 @@
-import 'package:cocktailapp/src/config/themes/app_theme.dart';
 import 'package:cocktailapp/src/config/themes/cocktails_sizes.dart';
 import 'package:cocktailapp/src/domain/entities/cocktail_details_entity.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +22,7 @@ class QrDialog extends StatelessWidget {
               height: CocktailSizes.sizeHuge * 2,
               width: CocktailSizes.sizeHuge * 2,
               child: QrImage(
-                data: cocktailDetailsEntity.drinkName,
+                data: cocktailDetailsEntity.drinkId,
               ),
             ),
           ),
