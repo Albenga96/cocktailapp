@@ -16,9 +16,12 @@ class AuthView extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(
-              Strings.homePageTitleText,
-              style: cocktailsLightTheme().textTheme.headline6,
+            Hero(
+              tag: "app-title",
+              child: Text(
+                Strings.homePageTitleText,
+                style: cocktailsLightTheme().textTheme.headline6,
+              ),
             ),
             SizedBox(
               height: CocktailSizes.sizeMedium,
@@ -28,10 +31,13 @@ class AuthView extends StatelessWidget {
                 final isAuthenticated = await AuthenticationWithFingerprint()
                     .authenticateWithFingerprint();
                 if (isAuthenticated) {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (ctx) => HomeView(),
-                    ),
+                  Navigator.push(
+                    context,
+                    PageRouteBuilder(
+                        transitionDuration: Duration(
+                          seconds: 1,
+                        ),
+                        pageBuilder: (_, __, ___) => HomeView()),
                   );
                 }
               },
