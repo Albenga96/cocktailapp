@@ -3,6 +3,7 @@ import 'package:cocktailapp/src/presentation/providers/cocktail_details.dart';
 
 import 'package:cocktailapp/src/presentation/providers/cocktails.dart';
 import 'package:cocktailapp/src/presentation/views/auth_view.dart';
+import 'package:cocktailapp/src/presentation/views/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
@@ -33,7 +34,7 @@ class CocktailsApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Cocktails',
         theme: cocktailsLightTheme(),
-        home: AuthView(),
+        home: HomeView(), //TODO: put AuthView()
       ),
     );
   }

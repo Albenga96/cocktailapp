@@ -20,25 +20,13 @@ class SearchView extends StatelessWidget {
   final bool isNameSearch;
 
   Future<void> _searchCocktailsByName(BuildContext context) async {
-    try {
-      await Provider.of<Cocktails>(context, listen: false)
-          .searchCocktailsByName();
-    } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-            "Nessun cocktail",
-          ),
-        ),
-      );
-    }
+    await Provider.of<Cocktails>(context, listen: false)
+        .searchCocktailsByName();
   }
 
   Future<void> _searchCocktailsByIngredient(BuildContext context) async {
-    try {
-      await Provider.of<Cocktails>(context, listen: false)
-          .searchCocktailsByIngredient();
-    } catch (e) {}
+    await Provider.of<Cocktails>(context, listen: false)
+        .searchCocktailsByIngredient();
   }
 
   @override

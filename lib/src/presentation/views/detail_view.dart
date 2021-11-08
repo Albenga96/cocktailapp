@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cocktailapp/src/presentation/widgets/detail/qr_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -45,35 +46,47 @@ class _DetailViewState extends State<DetailView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: Icon(
-              Icons.share_sharp,
-            ),
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: Icon(
-              Icons.star_outline,
-            ),
-          )
-        ],
-        centerTitle: true,
-        backgroundColor: CocktailsColors.cocktailsPrimaryColor,
-      ),
-      body: FutureBuilder(
-        future: widget.isRandom
-            ? _fetchRandomCocktails(context)
-            : _fetchCocktailDetails(context),
-        builder: (context, snapshot) {
-          return snapshot.connectionState == ConnectionState.waiting
-              ? Center(
+    return FutureBuilder(
+      future: widget.isRandom
+          ? _fetchRandomCocktails(context)
+          : _fetchCocktailDetails(context),
+      builder: (context, snapshot) {
+        return snapshot.connectionState == ConnectionState.waiting
+            ? Scaffold(
+                body: Center(
                   child: CircularProgressIndicator(),
-                )
-              : Consumer<CocktailDetails>(
+                ),
+              )
+            : Scaffold(
+                appBar: AppBar(
+                  actions: [
+                    IconButton(
+                      onPressed: () {
+                        showDialog(
+                          context: context,
+                          builder: (ctx) => QrDialog(
+                            cocktailDetailsEntity: Provider.of<CocktailDetails>(
+                                    context,
+                                    listen: false)
+                                .cocktailDetails,
+                          ),
+                        );
+                      },
+                      icon: Icon(
+                        Icons.share_sharp,
+                      ),
+                    ),
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(
+                        Icons.star_outline,
+                      ),
+                    )
+                  ],
+                  centerTitle: true,
+                  backgroundColor: CocktailsColors.cocktailsPrimaryColor,
+                ),
+                body: Consumer<CocktailDetails>(
                   builder: (ctx, cocktailDetailsData, _) => ListView(
                     children: [
                       Center(
@@ -228,9 +241,9 @@ class _DetailViewState extends State<DetailView> {
                       ),
                     ],
                   ),
-                );
-        },
-      ),
+                ),
+              );
+      },
     );
   }
 }
