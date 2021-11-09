@@ -35,7 +35,7 @@ class AuthView extends StatelessWidget {
                     context,
                     PageRouteBuilder(
                         transitionDuration: Duration(
-                          seconds: 1,
+                          seconds: 2,
                         ),
                         pageBuilder: (_, __, ___) => HomeView()),
                   );

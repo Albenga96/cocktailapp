@@ -14,20 +14,25 @@ class InfoColumn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Text(
-          header,
-          style: cocktailsLightTheme().textTheme.headline6,
-        ),
-        SizedBox(
-          height: CocktailsMargins.coctailsMarginSmall,
-        ),
-        Text(
-          value,
-          style: cocktailsLightTheme().textTheme.headline4,
-        ),
-      ],
+    return Padding(
+      padding: const EdgeInsets.all(
+        CocktailsMargins.coctailsMarginVerySmall,
+      ),
+      child: Column(
+        children: [
+          Text(
+            header,
+            style: cocktailsLightTheme().textTheme.headline6,
+          ),
+          SizedBox(
+            height: CocktailsMargins.coctailsMarginSmall,
+          ),
+          Text(
+            value,
+            style: cocktailsLightTheme().textTheme.headline4,
+          ),
+        ],
+      ),
     );
   }
 }
