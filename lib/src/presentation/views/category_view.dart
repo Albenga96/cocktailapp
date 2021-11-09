@@ -2,6 +2,7 @@ import 'package:cocktailapp/src/config/themes/app_theme.dart';
 import 'package:cocktailapp/src/config/themes/cocktails_colors.dart';
 import 'package:cocktailapp/src/config/themes/cocktails_margins.dart';
 import 'package:cocktailapp/src/presentation/utils/category.dart';
+import 'package:cocktailapp/src/presentation/utils/strings.dart';
 import 'package:cocktailapp/src/presentation/widgets/home/drink_selector.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +21,7 @@ class CategoryView extends StatelessWidget {
         centerTitle: true,
         backgroundColor: CocktailsColors.cocktailsPrimaryColor,
         title: Text(
-          "Categorie",
+          Strings.categoryText,
           style: cocktailsLightTheme().textTheme.headline6,
         ),
       ),

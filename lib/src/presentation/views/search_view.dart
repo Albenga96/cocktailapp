@@ -36,7 +36,7 @@ class SearchView extends StatelessWidget {
         centerTitle: true,
         backgroundColor: CocktailsColors.cocktailsPrimaryColor,
         title: Text(
-          "Cerca",
+          Strings.searchText,
           style: cocktailsLightTheme().textTheme.headline6,
         ),
       ),

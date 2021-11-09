@@ -5,6 +5,7 @@ import 'package:cocktailapp/src/config/themes/cocktails_margins.dart';
 import 'package:cocktailapp/src/config/themes/cocktails_sizes.dart';
 
 import 'package:cocktailapp/src/presentation/providers/favorite.dart';
+import 'package:cocktailapp/src/presentation/utils/strings.dart';
 import 'package:cocktailapp/src/presentation/views/detail_view.dart';
 
 import 'package:flutter/material.dart';
@@ -31,7 +32,7 @@ class _FavoritesViewState extends State<FavoritesView> {
         centerTitle: true,
         backgroundColor: CocktailsColors.cocktailsPrimaryColor,
         title: Text(
-          "Preferiti",
+          Strings.favoriteText,
           style: cocktailsLightTheme().textTheme.headline6,
         ),
       ),

@@ -76,13 +76,13 @@ class HomeView extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   DrinkSelector(
-                    text: "Alcolici",
+                    text: Strings.alcoholicText,
                     asset: "assets/images/drink.svg",
                     filter: "Alcoholic",
                     fetchCocktails: () => _fetchAlcoholicCocktails(context),
                   ),
                   DrinkSelector(
-                    text: "Analcolici",
+                    text: Strings.nonAlcoholicText,
                     asset: "assets/images/analcoholic.svg",
                     filter: "Non_Alcoholic",
                     fetchCocktails: () => _fetchAlcoholicCocktails(context),
@@ -94,7 +94,7 @@ class HomeView extends StatelessWidget {
               ),
               RandomCocktail(
                 asset: "assets/images/random.svg",
-                text: "Scegli tu per me",
+                text: Strings.randomText,
               )
             ],
           ),
@@ -102,14 +102,14 @@ class HomeView extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               SelectSearch(
-                text: "Cerca per nome",
+                text: Strings.searchByNameText,
                 isNameSearch: true,
               ),
               SizedBox(
                 height: CocktailSizes.sizeMedium,
               ),
               SelectSearch(
-                text: "Cerca per ingrediente",
+                text: Strings.searchByIngredientText,
                 isNameSearch: false,
               )
             ],

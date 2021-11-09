@@ -1,6 +1,7 @@
 import 'package:cocktailapp/src/config/themes/app_theme.dart';
 import 'package:cocktailapp/src/config/themes/cocktails_colors.dart';
 import 'package:cocktailapp/src/config/themes/cocktails_sizes.dart';
+import 'package:cocktailapp/src/presentation/utils/strings.dart';
 import 'package:cocktailapp/src/presentation/views/auth_view.dart';
 import 'package:cocktailapp/src/presentation/views/favorites_view.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +30,7 @@ class CocktailDrawer extends StatelessWidget {
               ),
             ),
             title: Text(
-              "Preferiti",
+              Strings.favoritesText,
               style: cocktailsLightTheme().textTheme.headline3,
             ),
           ),
@@ -40,7 +41,7 @@ class CocktailDrawer extends StatelessWidget {
               ),
             ),
             title: Text(
-              "Esci",
+              Strings.logoutText,
               style: cocktailsLightTheme().textTheme.headline3,
             ),
           ),

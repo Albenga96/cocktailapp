@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cocktailapp/src/domain/entities/cocktail_entity.dart';
 import 'package:cocktailapp/src/presentation/providers/favorite.dart';
+import 'package:cocktailapp/src/presentation/utils/strings.dart';
 import 'package:cocktailapp/src/presentation/widgets/detail/qr_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -140,17 +141,17 @@ class _DetailViewState extends State<DetailView> {
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           InfoColumn(
-                            header: "Cat.",
+                            header: Strings.categoryInfoText,
                             value: cocktailDetailsData
                                 .cocktailDetails.drinkCategory,
                           ),
                           InfoColumn(
-                            header: "Glass",
+                            header: Strings.glassInfoText,
                             value:
                                 cocktailDetailsData.cocktailDetails.drinkGlass,
                           ),
                           InfoColumn(
-                            header: "Type",
+                            header: Strings.typeInfoText,
                             value: cocktailDetailsData
                                 .cocktailDetails.drinkAlcoholic,
                           )
@@ -159,7 +160,7 @@ class _DetailViewState extends State<DetailView> {
                       SizedBox(height: CocktailSizes.sizeMedium),
                       Center(
                         child: Text(
-                          "Ingredienti",
+                          Strings.ingredientsText,
                           style: cocktailsLightTheme().textTheme.headline6,
                         ),
                       ),
@@ -236,7 +237,7 @@ class _DetailViewState extends State<DetailView> {
                       ),
                       Center(
                         child: Text(
-                          "Istruzioni",
+                          Strings.instructionsText,
                           style: cocktailsLightTheme().textTheme.headline6,
                         ),
                       ),
