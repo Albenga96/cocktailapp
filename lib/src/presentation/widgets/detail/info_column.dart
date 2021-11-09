@@ -27,9 +27,11 @@ class InfoColumn extends StatelessWidget {
           SizedBox(
             height: CocktailsMargins.coctailsMarginSmall,
           ),
-          Text(
-            value,
-            style: cocktailsLightTheme().textTheme.headline4,
+          FittedBox(
+            child: Text(
+              value,
+              style: cocktailsLightTheme().textTheme.headline4,
+            ),
           ),
         ],
       ),
