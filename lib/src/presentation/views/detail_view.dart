@@ -137,27 +137,31 @@ class _DetailViewState extends State<DetailView> {
                       SizedBox(
                         height: CocktailSizes.sizeSmall,
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          InfoColumn(
-                            header: Strings.categoryInfoText,
-                            value: cocktailDetailsData
-                                .cocktailDetails.drinkCategory,
-                          ),
-                          InfoColumn(
-                            header: Strings.glassInfoText,
-                            value:
-                                cocktailDetailsData.cocktailDetails.drinkGlass,
-                          ),
-                          InfoColumn(
-                            header: Strings.typeInfoText,
-                            value: cocktailDetailsData
-                                .cocktailDetails.drinkAlcoholic,
-                          )
-                        ],
+                      FittedBox(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            InfoColumn(
+                              header: Strings.categoryInfoText,
+                              value: cocktailDetailsData
+                                  .cocktailDetails.drinkCategory,
+                            ),
+                            InfoColumn(
+                              header: Strings.glassInfoText,
+                              value: cocktailDetailsData
+                                  .cocktailDetails.drinkGlass,
+                            ),
+                            InfoColumn(
+                              header: Strings.typeInfoText,
+                              value: cocktailDetailsData
+                                  .cocktailDetails.drinkAlcoholic,
+                            )
+                          ],
+                        ),
                       ),
-                      SizedBox(height: CocktailSizes.sizeMedium),
+                      SizedBox(
+                        height: CocktailSizes.sizeMedium,
+                      ),
                       Center(
                         child: Text(
                           Strings.ingredientsText,
