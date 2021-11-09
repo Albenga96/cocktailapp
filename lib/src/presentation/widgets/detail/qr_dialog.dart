@@ -6,10 +6,10 @@ import 'package:qr_flutter/qr_flutter.dart';
 class QrDialog extends StatelessWidget {
   const QrDialog({
     Key? key,
-    required this.cocktailDetailsEntity,
+    required this.drinkId,
   }) : super(key: key);
 
-  final CocktailDetailsEntity cocktailDetailsEntity;
+  final String drinkId;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class QrDialog extends StatelessWidget {
               height: CocktailSizes.sizeHuge * 2,
               width: CocktailSizes.sizeHuge * 2,
               child: QrImage(
-                data: cocktailDetailsEntity.drinkId,
+                data: drinkId,
               ),
             ),
           ),

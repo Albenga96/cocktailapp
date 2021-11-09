@@ -28,11 +28,14 @@ class CategoryView extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.only(
           top: CocktailsMargins.cocktailMarginBig,
+          right: CocktailsMargins.coctailsMarginSmall,
+          left: CocktailsMargins.coctailsMarginSmall,
         ),
         child: GridView(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             crossAxisSpacing: CocktailsMargins.cocktailMarginMedium,
+            mainAxisSpacing: CocktailsMargins.coctailsMarginSmall,
           ),
           children: List.generate(
             category.length,

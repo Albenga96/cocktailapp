@@ -52,59 +52,52 @@ class _DetailViewState extends State<DetailView> {
   @override
   Widget build(BuildContext context) {
     final cocktailFound = Provider.of<FavoriteCocktails>(context).cocktailFound;
-    return FutureBuilder(
-      future: widget.isRandom
-          ? _fetchRandomCocktails(context)
-          : _fetchCocktailDetails(context),
-      builder: (context, snapshot) {
-        return snapshot.connectionState == ConnectionState.waiting
-            ? Scaffold(
-                body: Center(
-                  child: CircularProgressIndicator(),
-                ),
-              )
-            : Scaffold(
-                appBar: AppBar(
-                  actions: [
-                    IconButton(
-                      onPressed: () {
-                        showDialog(
-                          context: context,
-                          builder: (ctx) => QrDialog(
-                            cocktailDetailsEntity: Provider.of<CocktailDetails>(
-                                    context,
-                                    listen: false)
-                                .cocktailDetails,
-                          ),
-                        );
-                      },
-                      icon: Icon(
-                        Icons.share_sharp,
-                      ),
-                    ),
-                    IconButton(
-                      onPressed: () {
-                        final cocktailDetails =
-                            Provider.of<CocktailDetails>(context, listen: false)
-                                .cocktailDetails;
-                        Provider.of<FavoriteCocktails>(context, listen: false)
-                            .toggleFavorite(
-                          CocktailEntity(
-                            drinkName: cocktailDetails.drinkName,
-                            drinkThumbnail: cocktailDetails.drinkThumbnail,
-                            drinkId: cocktailDetails.drinkId,
-                          ),
-                        );
-                      },
-                      icon: Icon(
-                        cocktailFound ? Icons.star : Icons.star_outline,
-                      ),
-                    )
-                  ],
-                  centerTitle: true,
-                  backgroundColor: CocktailsColors.cocktailsPrimaryColor,
-                ),
-                body: Consumer<CocktailDetails>(
+    return Scaffold(
+        appBar: AppBar(
+          actions: [
+            IconButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (ctx) => QrDialog(
+                    drinkId: widget.drinkId,
+                  ),
+                );
+              },
+              icon: Icon(
+                Icons.share_sharp,
+              ),
+            ),
+            IconButton(
+              onPressed: () {
+                final cocktailDetails =
+                    Provider.of<CocktailDetails>(context, listen: false)
+                        .cocktailDetails;
+                Provider.of<FavoriteCocktails>(context, listen: false)
+                    .toggleFavorite(
+                  CocktailEntity(
+                    drinkName: cocktailDetails.drinkName,
+                    drinkThumbnail: cocktailDetails.drinkThumbnail,
+                    drinkId: cocktailDetails.drinkId,
+                  ),
+                );
+              },
+              icon: Icon(
+                cocktailFound ? Icons.star : Icons.star_outline,
+              ),
+            )
+          ],
+          centerTitle: true,
+          backgroundColor: CocktailsColors.cocktailsPrimaryColor,
+        ),
+        body: FutureBuilder(
+          future: widget.isRandom
+              ? _fetchRandomCocktails(context)
+              : _fetchCocktailDetails(context),
+          builder: (context, snapshot) => snapshot.connectionState ==
+                  ConnectionState.waiting
+              ? Center(child: CircularProgressIndicator())
+              : Consumer<CocktailDetails>(
                   builder: (ctx, cocktailDetailsData, _) => ListView(
                     children: [
                       Center(
@@ -249,8 +242,6 @@ class _DetailViewState extends State<DetailView> {
                     ],
                   ),
                 ),
-              );
-      },
-    );
+        ));
   }
 }

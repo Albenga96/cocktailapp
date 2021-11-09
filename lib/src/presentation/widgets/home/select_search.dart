@@ -46,6 +46,7 @@ class SelectSearch extends StatelessWidget {
               ),
               child: Text(
                 text,
+                textAlign: TextAlign.center,
                 style: cocktailsLightTheme().textTheme.headline4,
               ),
             ),
