@@ -16,7 +16,7 @@ class InfoColumn extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(
-        CocktailsMargins.coctailsMarginVerySmall,
+        CocktailsMargins.coctailsMarginSmall,
       ),
       child: Column(
         children: [

@@ -1,4 +1,5 @@
 import 'package:cocktailapp/src/presentation/views/qr_view.dart';
+import 'package:cocktailapp/src/presentation/widgets/common/error_dialog.dart';
 import 'package:cocktailapp/src/presentation/widgets/home/select_search.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -18,13 +19,21 @@ class HomeView extends StatelessWidget {
   const HomeView({Key? key}) : super(key: key);
 
   Future<void> _fetchAlcoholicCocktails(BuildContext context) async {
-    await Provider.of<Cocktails>(context, listen: false)
-        .fetchAlcoholicCocktails();
+    try {
+      await Provider.of<Cocktails>(context, listen: false)
+          .fetchAlcoholicCocktails();
+    } catch (e) {
+      showDialog(context: context, builder: (ctx) => ErrorDialog());
+    }
   }
 
   Future<void> _fetchCategoryCocktails(BuildContext context) async {
-    await Provider.of<Cocktails>(context, listen: false)
-        .fetchCategoryCocktails();
+    try {
+      await Provider.of<Cocktails>(context, listen: false)
+          .fetchCategoryCocktails();
+    } catch (e) {
+      showDialog(context: context, builder: (ctx) => ErrorDialog());
+    }
   }
 
   @override

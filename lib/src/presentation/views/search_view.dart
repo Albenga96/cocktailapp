@@ -3,6 +3,7 @@ import 'package:cocktailapp/src/config/themes/cocktails_margins.dart';
 import 'package:cocktailapp/src/config/themes/cocktails_sizes.dart';
 import 'package:cocktailapp/src/presentation/providers/cocktails.dart';
 import 'package:cocktailapp/src/presentation/utils/strings.dart';
+import 'package:cocktailapp/src/presentation/widgets/common/error_dialog.dart';
 import 'package:flutter/material.dart';
 
 import 'package:cocktailapp/src/config/themes/app_theme.dart';
@@ -20,13 +21,21 @@ class SearchView extends StatelessWidget {
   final bool isNameSearch;
 
   Future<void> _searchCocktailsByName(BuildContext context) async {
-    await Provider.of<Cocktails>(context, listen: false)
-        .searchCocktailsByName();
+    try {
+      await Provider.of<Cocktails>(context, listen: false)
+          .searchCocktailsByName();
+    } catch (e) {
+      showDialog(context: context, builder: (ctx) => ErrorDialog());
+    }
   }
 
   Future<void> _searchCocktailsByIngredient(BuildContext context) async {
-    await Provider.of<Cocktails>(context, listen: false)
-        .searchCocktailsByIngredient();
+    try {
+      await Provider.of<Cocktails>(context, listen: false)
+          .searchCocktailsByIngredient();
+    } catch (e) {
+      showDialog(context: context, builder: (ctx) => ErrorDialog());
+    }
   }
 
   @override

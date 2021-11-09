@@ -1,7 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cocktailapp/src/domain/entities/cocktail_details_entity.dart';
 import 'package:cocktailapp/src/domain/entities/cocktail_entity.dart';
 import 'package:cocktailapp/src/presentation/providers/favorite.dart';
 import 'package:cocktailapp/src/presentation/utils/strings.dart';
+import 'package:cocktailapp/src/presentation/widgets/common/error_dialog.dart';
 import 'package:cocktailapp/src/presentation/widgets/detail/qr_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -29,13 +31,21 @@ class DetailView extends StatefulWidget {
 
 class _DetailViewState extends State<DetailView> {
   Future<void> _fetchCocktailDetails(BuildContext context) async {
-    await Provider.of<CocktailDetails>(context, listen: false)
-        .fetchCocktailDetails();
+    try {
+      await Provider.of<CocktailDetails>(context, listen: false)
+          .fetchCocktailDetails();
+    } catch (e) {
+      showDialog(context: context, builder: (ctx) => ErrorDialog());
+    }
   }
 
   Future<void> _fetchRandomCocktails(BuildContext context) async {
-    await Provider.of<CocktailDetails>(context, listen: false)
-        .fetchRandomCocktail();
+    try {
+      await Provider.of<CocktailDetails>(context, listen: false)
+          .fetchRandomCocktail();
+    } catch (e) {
+      showDialog(context: context, builder: (ctx) => ErrorDialog());
+    }
   }
 
   @override
@@ -52,6 +62,8 @@ class _DetailViewState extends State<DetailView> {
   @override
   Widget build(BuildContext context) {
     final cocktailFound = Provider.of<FavoriteCocktails>(context).cocktailFound;
+    final CocktailDetailsEntity cocktailDetails =
+        Provider.of<CocktailDetails>(context, listen: false).cocktailDetails;
     return Scaffold(
         appBar: AppBar(
           actions: [
@@ -70,9 +82,6 @@ class _DetailViewState extends State<DetailView> {
             ),
             IconButton(
               onPressed: () {
-                final cocktailDetails =
-                    Provider.of<CocktailDetails>(context, listen: false)
-                        .cocktailDetails;
                 Provider.of<FavoriteCocktails>(context, listen: false)
                     .toggleFavorite(
                   CocktailEntity(

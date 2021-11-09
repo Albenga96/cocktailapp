@@ -29,4 +29,8 @@ class Strings {
 
   //Favorite view
   static const favoriteText = "Preferiti";
+
+  //Error dialog
+  static const errorTitleText = "Errore";
+  static const errorDialogText = "Si è verificato un errore, riprovare";
 }
