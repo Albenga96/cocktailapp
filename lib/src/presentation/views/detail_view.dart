@@ -171,58 +171,54 @@ class _DetailViewState extends State<DetailView> {
                           style: cocktailsLightTheme().textTheme.headline6,
                         ),
                       ),
-                      Expanded(
-                        child: ListView.builder(
-                            padding: EdgeInsets.zero,
-                            shrinkWrap: true,
-                            physics: NeverScrollableScrollPhysics(),
-                            itemCount: cocktailDetailsData
-                                .cocktailDetails.ingredients.length,
-                            itemBuilder: (context, index) {
-                              List<String?> measures = [];
-                              int diff = cocktailDetailsData
-                                      .cocktailDetails.ingredients.length -
-                                  cocktailDetailsData
-                                      .cocktailDetails.measures.length;
-                              if (diff == 0) {
-                                measures = cocktailDetailsData
-                                    .cocktailDetails.measures;
-                              } else {
-                                measures = cocktailDetailsData
-                                    .cocktailDetails.measures;
-                                for (int i = 0; i < diff; i++) {
-                                  measures.add("");
-                                }
+                      ListView.builder(
+                          shrinkWrap: true,
+                          physics: NeverScrollableScrollPhysics(),
+                          itemCount: cocktailDetailsData
+                              .cocktailDetails.ingredients.length,
+                          itemBuilder: (context, index) {
+                            List<String?> measures = [];
+                            int diff = cocktailDetailsData
+                                    .cocktailDetails.ingredients.length -
+                                cocktailDetailsData
+                                    .cocktailDetails.measures.length;
+                            if (diff == 0) {
+                              measures =
+                                  cocktailDetailsData.cocktailDetails.measures;
+                            } else {
+                              measures =
+                                  cocktailDetailsData.cocktailDetails.measures;
+                              for (int i = 0; i < diff; i++) {
+                                measures.add("");
                               }
-                              return Padding(
-                                padding: const EdgeInsets.symmetric(
-                                  vertical:
-                                      CocktailsMargins.coctailsMarginVerySmall,
-                                  horizontal:
-                                      CocktailsMargins.cocktailMarginBig,
-                                ),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      cocktailDetailsData
-                                          .cocktailDetails.ingredients[index]!,
-                                      style: cocktailsLightTheme()
-                                          .textTheme
-                                          .headline4,
-                                    ),
-                                    Text(
-                                      measures[index]!,
-                                      style: cocktailsLightTheme()
-                                          .textTheme
-                                          .headline4,
-                                    ),
-                                  ],
-                                ),
-                              );
-                            }),
-                      ),
+                            }
+                            return Padding(
+                              padding: const EdgeInsets.symmetric(
+                                vertical:
+                                    CocktailsMargins.coctailsMarginVerySmall,
+                                horizontal: CocktailsMargins.cocktailMarginBig,
+                              ),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    cocktailDetailsData
+                                        .cocktailDetails.ingredients[index]!,
+                                    style: cocktailsLightTheme()
+                                        .textTheme
+                                        .headline4,
+                                  ),
+                                  Text(
+                                    measures[index]!,
+                                    style: cocktailsLightTheme()
+                                        .textTheme
+                                        .headline4,
+                                  ),
+                                ],
+                              ),
+                            );
+                          }),
                       SizedBox(
                         height: CocktailSizes.sizeMedium,
                       ),
