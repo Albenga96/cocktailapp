@@ -77,24 +77,25 @@ class _DetailViewState extends State<DetailView> {
                 Icons.share_sharp,
               ),
             ),
-            IconButton(
-              onPressed: () {
-                final cocktailDetails =
-                    Provider.of<CocktailDetails>(context, listen: false)
-                        .cocktailDetails;
-                Provider.of<FavoriteCocktails>(context, listen: false)
-                    .toggleFavorite(
-                  CocktailEntity(
-                    drinkName: cocktailDetails.drinkName,
-                    drinkThumbnail: cocktailDetails.drinkThumbnail,
-                    drinkId: cocktailDetails.drinkId,
-                  ),
-                );
-              },
-              icon: Icon(
-                cocktailFound ? Icons.star : Icons.star_outline,
-              ),
-            )
+            if (!widget.isRandom)
+              IconButton(
+                onPressed: () {
+                  final cocktailDetails =
+                      Provider.of<CocktailDetails>(context, listen: false)
+                          .cocktailDetails;
+                  Provider.of<FavoriteCocktails>(context, listen: false)
+                      .toggleFavorite(
+                    CocktailEntity(
+                      drinkName: cocktailDetails.drinkName,
+                      drinkThumbnail: cocktailDetails.drinkThumbnail,
+                      drinkId: cocktailDetails.drinkId,
+                    ),
+                  );
+                },
+                icon: Icon(
+                  cocktailFound ? Icons.star : Icons.star_outline,
+                ),
+              )
           ],
           centerTitle: true,
           backgroundColor: CocktailsColors.cocktailsPrimaryColor,
