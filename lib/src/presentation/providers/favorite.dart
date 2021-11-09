@@ -24,10 +24,13 @@ class FavoriteCocktails with ChangeNotifier {
   void toggleFavorite(CocktailEntity cocktailEntity) async {
     if (cocktailFound) {
       await _deleteFavoriteUseCase(params: cocktailEntity.drinkId);
+      _favoriteCocktails.removeWhere(
+          (cocktail) => cocktail.drinkId == cocktailEntity.drinkId);
       cocktailFound = false;
       notifyListeners();
     } else {
       await _insertFavoriteUseCase(params: cocktailEntity);
+      _favoriteCocktails.add(cocktailEntity);
       cocktailFound = true;
       notifyListeners();
     }
