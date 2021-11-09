@@ -33,9 +33,13 @@ class FavoriteCocktails with ChangeNotifier {
     }
   }
 
-  void retrieveFavoriteList() async {
-    _favoriteCocktails = await _retrieveFavoriteUseCase(params: "");
-    notifyListeners();
+  Future<void> retrieveFavoriteList() async {
+    try {
+      _favoriteCocktails = await _retrieveFavoriteUseCase(params: "");
+      notifyListeners();
+    } catch (e) {
+      throw ("Si è verificato un errore");
+    }
   }
 
   void initFavorites(String drinkId) async {
