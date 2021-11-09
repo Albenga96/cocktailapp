@@ -191,42 +191,43 @@ class _DetailViewState extends State<DetailView> {
                           ),
                           Expanded(
                             child: ListView.builder(
-                                padding: EdgeInsets.zero,
-                                shrinkWrap: true,
-                                physics: NeverScrollableScrollPhysics(),
-                                itemCount: cocktailDetailsData
-                                    .cocktailDetails.ingredients.length,
-                                itemBuilder: (context, index) {
-                                  List<String?> measures = [];
-                                  int diff = cocktailDetailsData
-                                          .cocktailDetails.ingredients.length -
-                                      cocktailDetailsData
-                                          .cocktailDetails.measures.length;
-                                  if (diff == 0) {
-                                    measures = cocktailDetailsData
-                                        .cocktailDetails.measures;
-                                  } else {
-                                    measures = cocktailDetailsData
-                                        .cocktailDetails.measures;
-                                    for (int i = 0; i < diff; i++) {
-                                      measures.add("");
-                                    }
+                              padding: EdgeInsets.zero,
+                              shrinkWrap: true,
+                              physics: NeverScrollableScrollPhysics(),
+                              itemCount: cocktailDetailsData
+                                  .cocktailDetails.ingredients.length,
+                              itemBuilder: (context, index) {
+                                List<String?> measures = [];
+                                int diff = cocktailDetailsData
+                                        .cocktailDetails.ingredients.length -
+                                    cocktailDetailsData
+                                        .cocktailDetails.measures.length;
+                                if (diff == 0) {
+                                  measures = cocktailDetailsData
+                                      .cocktailDetails.measures;
+                                } else {
+                                  measures = cocktailDetailsData
+                                      .cocktailDetails.measures;
+                                  for (int i = 0; i < diff; i++) {
+                                    measures.add("");
                                   }
-                                  return Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                      vertical: CocktailsMargins
-                                          .coctailsMarginVerySmall,
-                                      horizontal:
-                                          CocktailsMargins.cocktailMarginBig,
-                                    ),
-                                    child: Text(
-                                      measures[index]!,
-                                      style: cocktailsLightTheme()
-                                          .textTheme
-                                          .headline4,
-                                    ),
-                                  );
-                                }),
+                                }
+                                return Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                    vertical: CocktailsMargins
+                                        .coctailsMarginVerySmall,
+                                    horizontal:
+                                        CocktailsMargins.cocktailMarginBig,
+                                  ),
+                                  child: Text(
+                                    measures[index]!,
+                                    style: cocktailsLightTheme()
+                                        .textTheme
+                                        .headline4,
+                                  ),
+                                );
+                              },
+                            ),
                           ),
                         ],
                       ),

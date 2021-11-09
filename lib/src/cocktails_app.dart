@@ -1,10 +1,10 @@
 import 'package:cocktailapp/src/config/themes/app_theme.dart';
+import 'package:cocktailapp/src/core/utils/constant.dart';
 import 'package:cocktailapp/src/presentation/providers/cocktail_details.dart';
 
 import 'package:cocktailapp/src/presentation/providers/cocktails.dart';
 import 'package:cocktailapp/src/presentation/providers/favorite.dart';
 import 'package:cocktailapp/src/presentation/views/auth_view.dart';
-import 'package:cocktailapp/src/presentation/views/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get_it/get_it.dart';
@@ -46,7 +46,7 @@ class CocktailsApp extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Cocktails',
+        title: kAppTitle,
         theme: cocktailsLightTheme(),
         home: AuthView(),
       ),

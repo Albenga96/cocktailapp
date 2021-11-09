@@ -55,7 +55,7 @@ class AuthView extends StatelessWidget {
                   vertical: CocktailsMargins.coctailsMarginSmall,
                 ),
                 child: Text(
-                  "Accedi",
+                  Strings.authText,
                   style: cocktailsLightTheme().textTheme.headline3,
                 ),
               ),
