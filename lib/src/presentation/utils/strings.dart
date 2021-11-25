@@ -2,7 +2,7 @@ class Strings {
   //Home Page
   static const searchCocktailText = "Cerca per nome...";
   static const searchCocktailByIngredientsText = "Cerca per ingredienti...";
-  static const homePageTitleText = "Cocktails - EasyPol";
+  static const homePageTitleText = "Cocktails";
   static const alcoholicText = "Alcolici";
   static const nonAlcoholicText = "Analcolici";
   static const randomText = "Scegli tu per me";

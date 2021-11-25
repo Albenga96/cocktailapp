@@ -17,7 +17,7 @@ class CocktailDrawer extends StatelessWidget {
           DrawerHeader(
             child: Center(
               child: CircleAvatar(
-                backgroundImage: AssetImage("assets/images/logo.png"),
+                backgroundImage: AssetImage("assets/images/logo.jpg"),
                 backgroundColor: CocktailsColors.cocktailsPrimaryColor,
                 radius: CocktailSizes.sizebig,
               ),
